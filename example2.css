@@ -1,0 +1,25 @@
+/*css*/
+
+.inset {
+    border-style: outset;
+    border-radius: 5px;
+    margin-left:470px;
+ 
+  
+    width:fit-content;
+}
+img{
+    margin-left:480px;
+    position: relative;
+  
+}
+video{
+    margin-left:350px;
+}
+    
+
+body{
+    background-color:lightcoral;
+    
+  
+}

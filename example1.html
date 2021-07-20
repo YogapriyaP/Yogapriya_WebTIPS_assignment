@@ -1,29 +1,60 @@
 <!DOCTYPE html>
+<head>
+    <style>
+        #div1 {
+  width: 100px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+        }
+    </style>
+</head>
 <html>
 <body>
-    <p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
-    <address>
-        Written by John Doe.<br>
-        Visit us at:<br>
-        Example.com<br>
-        Box 564, Disneyland<br>
-        USA
-        </address>
-        <p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+    
 
-        <p><cite>The Scream</cite> by Edvard Munch. Painted in 1893.</p>
-        <br>
-        <bdo dir="rtl">This text will be written from right to left</bdo>
-        <br>
-        <a href="https://www.w3schools.com/" target="_top">Visit W3Schools!</a>
-        <br>
-        <a href="mailto:yogapriya.pappaian@solitontech.com">Send email</a>
+       <!--Drag and Drop-->
+       <p>Drag the image into the rectangle:</p>
+       <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+       <br>
+       <img id="drag1" src="soliton.png" draggable="true" ondragstart="drag(event)" width="69" height="69">
+        <!--Geolocation API-->
+        <p>Click the button to get your coordinates.</p>
 
-        <br>
-        <button title="Cannot access" onclick="document.location='default.asp'" disabled>HTML Tutorial</button>
-        <br>
+<button onclick="getLocation()">Try It</button>
 
-        <iframe style="border: none" src="https://www.google.com/" title="google search" >Google Search</iframe>
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+</script>
 
 
 </body>
