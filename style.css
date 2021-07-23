@@ -192,7 +192,7 @@ width:80px;
 }
 
 .card:hover{
-box-shadow: 5px 5px 	#404040;
+box-shadow: 5px 5px black;
 width:150px;
 height:270px;
 }
