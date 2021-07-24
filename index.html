@@ -3,19 +3,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Forecasting App</title>
+    <title title="Weather Forecasting App">Weather Forecasting App</title>
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="container">
     <div class="col-4 col-s-6 item-1">
-    <img alt="london" src="Assets\HTML & CSS\Icons for cities\london.svg" height=60px;>
+    <img alt="london" title="London" src="Assets\HTML & CSS\Icons for cities\london.svg" height=60px;>
     <select name="city" class="select-city">
         <option>London</option>
     </select>
     <div class="date-time" >
-        <p class="time"><large>11:08:</large><span>43</span><img src="Assets/HTML & CSS/General Images & Icons/amState.svg" alt="AM"></p>
+        <p class="time"><large>11:08:</large><span>43</span><img  src="Assets/HTML & CSS/General Images & Icons/amState.svg" alt="AM"></p>
             
         <p class="date">22-July-2021</p>
       
@@ -81,9 +81,9 @@
     <div class="top_navbar">
         <div class="navbar-title">Top Cities Around The World</div>
         <div class="navbar_container">
-        <div class="navbar-item active"><img alt="sunny" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg"></div>
-        <div class="navbar-item"><img alt="snowy" src="Assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></div>
-        <div class="navbar-item"><img alt="rainy" src="Assets/HTML & CSS/Weather Icons/rainyIcon.svg"></div>
+        <div class="navbar-item active"><img alt="sunny" title="Sunny" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg"></div>
+        <div class="navbar-item"><img alt="snowy" title="Snowy" src="Assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></div>
+        <div class="navbar-item"><img alt="rainy"  title="Rainy" src="Assets/HTML & CSS/Weather Icons/rainyIcon.svg"></div>
         <div class="navbar_item" style="color:#eeb437"> Display Top
             <select class="cities_count">Cities
                 <option>Four</option>
@@ -139,5 +139,137 @@
     
 
 </section>
+<section class="cities_continent">
+    <div class="cont_title">Cities Across Continents at a Glance</div>
+    <div class="city_item">Continent Name <img alt="Down" src="Assets/HTML & CSS/General Images & Icons/arrowDown.svg" width="15px" height="15px">
+    Temperature <img alt="Up" src="Assets/HTML & CSS/General Images & Icons/arrowUp.svg" width="15px" height="15px">
+</div>
+    <ul class="flex_container" style="list-style-type:none;">
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">Asia</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 38&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">Coimbatore,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">Africa</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 38&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">Egypt,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">Europe</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 26&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">London,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">Asia</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 25&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">Delhi,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">Africa</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 27&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">Egypt,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">Europe</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 25&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">London,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">Asia</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 25&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">Delhi,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">Europe</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 38&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">London,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">South America</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 25&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">Brazil,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">Asia</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 25&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">Delhi,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">Europe</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 25&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">London,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+        <li class="card_cont">
+            <div class="cont_city_title">
+                <div class="cont_name">South America</div>
+                <div class="cont_temperature"><img class="temperature-icon" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" alt="" height="15px"> 35&nbsp;&deg;C</div>
+            </div>
+            <div class="cont_content">
+                <div class="cont_city">Brazil,10:10 AM</div>
+                <div class="cont-humidity"><img class="humidity-icon" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" alt="" > 53%</div>
+            </div>
+        </li>
+       
+    </ul>
+
+</section>
+
+
 </body>
 </html>

@@ -61,10 +61,13 @@ header img{
    flex-wrap: wrap;
   
 }
+.item-1 > img{
+    margin-top:10px;
+}
 
 
 .item-2{
-    font-family:courier;
+    font-family:arial;
     font-size:15px;
     color: black;
     margin-top:20px;
@@ -75,7 +78,7 @@ header img{
 }
 
 .item-3{
-    font-family:courier;
+    font-family:arial;
     font-size:15px;
     font-weight: bolder;
     text-align:center;
@@ -90,7 +93,7 @@ header img{
     display:grid;
     grid-template-columns: auto auto auto auto auto auto;
     color:#eeb437;
-    font-family: courier;
+    font-family: arial;
     text-align:center;
     
     
@@ -125,7 +128,7 @@ header img{
     position: relative;
 }
 .navbar_item{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: arial;
     font-weight: bold;
 }
 
@@ -134,7 +137,7 @@ header img{
 
  .navbar-title{
     color:#eeb437;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: arial;
     font-weight:bolder;
     font-size: 20px;
     text-align: center;
@@ -143,17 +146,19 @@ header img{
 .city_weathers{
     background-color: #101010;
     margin-top:10px;
-    border-radius: 46px 46px 0 0;
+    border-top-left-radius:50px;
+    border-top-right-radius: 50px;
     position:relative;
     
 }
 .cities_count{
     
-    font-family: courier;
+    font-family: arial;
     text-align: center;
     border-radius: 15px;
     box-shadow: 1px 1px black;
     color:#eeb437;
+
     justify-content:flex-end;
     background-color: transparent;
     width:70px;
@@ -174,7 +179,7 @@ header img{
     width:125px;
     height:250px;
    margin-top: 50px;
-    font-family:'Courier New', Courier, monospace;
+    font-family:arial;
     font-weight:bold;
     font-size:large;
     margin-bottom:30px;
@@ -191,10 +196,97 @@ width:80px;
 
 }
 
-.card:hover{
-box-shadow: 5px 5px black;
-width:150px;
-height:270px;
+
+
+.cities_continent{
+    
+        display:flex;
+       flex-wrap: wrap;
+       column-gap:20px;
+       background-color: #101010;
+        position: sticky;
+        top: 0;
+       text-align: center;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        position: relative;
+        padding:35px;
+        
+        
+    
+}
+.cont_title{
+    color:#eeb437;
+    font-family: arial;
+    text-align:justify;
+    font-weight: bolder;
+    margin-left:40px;
+    text-align:center;
+}
+.city_item{
+    font-family: arial;
+    color:white;
+    text-align:center;
+    font-weight: bold;
+    margin-right:20px;
+}
+.flex_container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color:#101010;
+    justify-content: space-evenly;
+    
+}
+.card_cont{
+    
+    background-color: #202020;
+    box-shadow: 5px 5px black;
+    width:250px;
+    height:50px;
+    margin-top: 50px;
+    font-family:'Courier New', Courier, monospace;
+    font-size:large;
+    margin-bottom:30px;
+    padding: 20px;
+    color:#eeb437;
+    
+    
+    
+}
+.card_cont > div{
+    color:white;
+    font-family:'arial';
+
+}
+
+
+
+
+.humidity_icon{
+    height:1em;
+}
+.cont_city_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 17px;
+    margin-top: -8px;
+    
+
+}
+.cont_name{
+    color: #FFF461;
+    font-family:arial;
+    font-weight:bold;
+}
+
+.cont_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+  
 }
 
 /* Responsive Web Design*/
