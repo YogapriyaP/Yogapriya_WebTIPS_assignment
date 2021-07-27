@@ -4,8 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title title="Weather Forecasting App">Weather Forecasting App</title>
-    
+    <link rel="icon" href="Assets/HTML & CSS/Weather Icons/rainyIconBlack.svg" type="image/icon type">
     <link rel="stylesheet" href="style.css">
+    
+
 </head>
 <body>
 <header class="container">
@@ -21,57 +23,59 @@
       
     </div>
     </div>
-    <div class="col-1 col-s-3 item-2" >
+    <div class="col-2 col-s-6 item-2">
+        <div class="line">
         <p>Temp <span>&#8451;</span></p>
-        <p><b>25 C</b></p>
-       
-       
-        <p>Temp F</p>
-        <p><b>78 F</b></p>
-       
+        <p>25 C</p>
     </div>
-    <div class="col-1 col-s-3 item-3">
+       <div>
         <p>Humidity</p>
-        <p><b>25 %</b></p>
-        
+        <p>25 %</p>
+    </div>
+        <div class="line">
+        <p>Temp F</p>
+        <p>75 F</p>
+    </div>
+        <div>
         <p>Precipitation</p>
-        <p><b>0 %</b></p>
+        <p>0 %</p>
+    </div>
        
     </div>
-    <div class="col-6 col-s-12 item-4">
+    <div class="col-6 col-s-12 item-3">
        <div>
            <P><b>Now</b></P>
-           <p>|</p>
+           <p class="right_line">|</p>
            <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
            <p><b>6</b></p>
        </div>
        <div>
         <P><b>12PM</b></P>
-        <p>|</p>
+        <p  class="right_line">|</p>
         <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
         <p><b>7</b></p>
     </div>
     <div>
         <P><b>1PM</b></P>
-        <p>|</p>
+        <p  class="right_line">|</p>
         <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/windyIcon.svg"style="height:15px;margin-left:-4px;"></p>
         <p><b>7</b></p>
     </div>
     <div>
         <P><b>2PM</b></P>
-        <p>|</p>
+        <p  class="right_line">|</p>
         <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
         <p><b>8</b></p>
     </div>
     <div>
         <P><b>3PM</b></P>
-        <p>|</p>
+        <p  class="right_line">|</p>
         <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/windyIcon.svg"style="height:15px;margin-left:-4px;"></p>
         <p><b>8</b></p>
     </div>
     <div>
         <P><b>4PM</b></P>
-        <p>|</p>
+        <p  class="right_line">|</p>
         <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px; margin-left:-4px;"></p>
         <p><b>6</b></p>
     </div>
@@ -79,71 +83,98 @@
 </header>
 <section class="city_weathers">
     <div class="top_navbar">
-        <div class="navbar-title">Top Cities Around The World</div>
+       
+      
+        <div class="navbar_title">Top Cities Around The World</div>    
         <div class="navbar_container">
         <div class="navbar-item active"><img alt="sunny" title="Sunny" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg"></div>
         <div class="navbar-item"><img alt="snowy" title="Snowy" src="Assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></div>
         <div class="navbar-item"><img alt="rainy"  title="Rainy" src="Assets/HTML & CSS/Weather Icons/rainyIcon.svg"></div>
-        <div class="navbar_item" style="color:#eeb437"> Display Top
-            <select class="cities_count">Cities
-                <option>Four</option>
-                <option>Five</option>
-                <option>Six</option>
+        <label class="navbar_item" style="color:var(--primary-white, white);"> Display Top
+            <select class="cities_count">
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
 
             </select>
-        </div>
+        </label>
      </div>
     
-<div class="card_container">
-    <div class="card">
-        
+<div class="slider" >  
+    <div class="left-arrow-div">
+        <img class="left-arrow" src="Assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt="">
+    </div>
+
+<ul class="card_container" style="list-style-type:none;">
+  
+    <li class="card">
+        <div class="card-title">
         <p><b>London</b></p>
-        <img alt="London" src="Assets/HTML & CSS/Icons for cities/london.svg">
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" width="20px" height="15px"> 25<span>&#8451;</span></p>
+    </div>
+        <p>10.00 AM</p>
+        <p>22-JULY-2021</p>
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" width="20px"  height="15px"> 53 %</p>
-        <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/windyIcon.svg" width="20px"  height="15px"> 5 km/hr</p>
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> 10 %</p>
 
-    </div>
-    <div class="card">
-        
+    </li>
+    <li class="card">
+        <div class="card-title">
         <p><b>London</b></p>
-        <img alt="London" src="Assets/HTML & CSS/Icons for cities/london.svg">
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" width="20px" height="15px"> 25<span>&#8451;</span></p>
+    </div>
+        <p>10.00 AM</p>
+        <p>22-JULY-2021</p>
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" width="20px"  height="15px"> 53 %</p>
-        <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/windyIcon.svg" width="20px"  height="15px"> 5 km/hr</p>
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> 10 %</p>
 
-    </div>
-    <div class="card">
-        
+    </li>
+    <li class="card">
+        <div class="card-title">
         <p><b></b>London</b></p>
-        <img alt="London" src="Assets/HTML & CSS/Icons for cities/london.svg">
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" width="20px" height="15px"> 25<span>&#8451;</span></p>
+    </div>
+        <p>10.00 AM</p>
+        <p>22-JULY-2021</p>
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" width="20px"  height="15px"> 53 %</p>
-        <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/windyIcon.svg" width="20px"  height="15px"> 5 km/hr</p>
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> 10 %</p>
 
-    </div>
-    <div class="card">
-        
+    </li>
+    <li class="card">
+        <div class="card-title">
         <p><b>London</b></p>
-        <img alt="London" src="Assets/HTML & CSS/Icons for cities/london.svg">
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/sunnyIcon.svg" width="20px" height="15px"> 25<span>&#8451;</span></p>
+    </div>
+        <p>10.00 AM</p>
+        <p>22-JULY-2021</p>
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/humidityIcon.svg" width="20px"  height="15px"> 53 %</p>
-        <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/windyIcon.svg" width="20px"  height="15px"> 5 km/hr</p>
+       
         <p><img alt="Sunny" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> 10 %</p>
 
+    </li>
+    </ul>
+    <div class="right-arrow-div">
+        <img class="right-arrow" src="Assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt="">
     </div>
+</div> 
     
     
 
 </section>
 <section class="cities_continent">
+    <div class="cont_header">
+
     <div class="cont_title">Cities Across Continents at a Glance</div>
-    <div class="city_item">Continent Name <img alt="Down" src="Assets/HTML & CSS/General Images & Icons/arrowDown.svg" width="15px" height="15px">
-    Temperature <img alt="Up" src="Assets/HTML & CSS/General Images & Icons/arrowUp.svg" width="15px" height="15px">
+    <div class="city_item">
+            <div class="continent">Continent&nbsp;Name&nbsp;<img class="cont_icon" src="Assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></div>
+            <div class="temperature">Temperature&nbsp;<img class="cont_icon" src="Assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt=""></div>
+        </div>
 </div>
+
     <ul class="flex_container" style="list-style-type:none;">
         <li class="card_cont">
             <div class="cont_city_title">
