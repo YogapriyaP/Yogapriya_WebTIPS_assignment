@@ -7,71 +7,71 @@
     <link rel="icon" href="Assets/HTML & CSS/Weather Icons/rainyIconBlack.svg" type="image/icon type">
     <link rel="stylesheet" href="style.css">
     
+    <script type="text/javascript" src="script.js"></script>
+    
 
 </head>
-<body>
+<body onload="PopulateDropDownList();">
 <header class="container">
     <div class="col-4 col-s-6 item-1">
-    <img alt="london" title="London" src="Assets\HTML & CSS\Icons for cities\london.svg" height=60px;>
-    <select name="city" class="select-city">
-        <option>London</option>
-    </select>
+    <img id="city-icon" src="Assets\HTML & CSS\Icons for cities\nome.svg" height=60px;>
+    <select name="city" class="select-city" id="city_dropdown"  onclick="ChangeValues();"></select>
     <div class="date-time" >
-        <p class="time"><large>11:08:</large><span>43</span><img  src="Assets/HTML & CSS/General Images & Icons/amState.svg" alt="AM"></p>
+        <p class="time"><large>9:21:</large><span>46</span><img  src="Assets/HTML & CSS/General Images & Icons/amState.svg" alt="AM"></p>
             
-        <p class="date">22-July-2021</p>
+        <p class="date" id="data">22-July-2021</p>
       
     </div>
     </div>
     <div class="col-2 col-s-6 item-2">
         <div class="line">
         <p>Temp <span>&#8451;</span></p>
-        <p>25 C</p>
+        <p id="temp-c">4°C</p>
     </div>
        <div>
         <p>Humidity</p>
-        <p>25 %</p>
+        <p id="humi_dity">91%</p>
     </div>
         <div class="line">
         <p>Temp F</p>
-        <p>75 F</p>
+        <p id="temp-f">39.2°F</p>
     </div>
         <div>
         <p>Precipitation</p>
-        <p>0 %</p>
+        <p id="prec">8%</p>
     </div>
        
     </div>
     <div class="col-6 col-s-12 item-3">
-       <div>
+       <!-- <div>
            <P><b>Now</b></P>
            <p class="right_line">|</p>
            <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
            <p><b>6</b></p>
-       </div>
+       </div> -->
        <div>
         <P><b>12PM</b></P>
         <p  class="right_line">|</p>
         <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
-        <p><b>7</b></p>
+        <p id="onehour"><b>7</b></p>
     </div>
     <div>
         <P><b>1PM</b></P>
         <p  class="right_line">|</p>
         <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/windyIcon.svg"style="height:15px;margin-left:-4px;"></p>
-        <p><b>7</b></p>
+        <p id="twohours"><b>7</b></p>
     </div>
     <div>
         <P><b>2PM</b></P>
         <p  class="right_line">|</p>
         <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
-        <p><b>8</b></p>
+        <p id="threehours"><b>8</b></p>
     </div>
     <div>
         <P><b>3PM</b></P>
         <p  class="right_line">|</p>
         <p><img alt="Cloudy" src="Assets/HTML & CSS/Weather Icons/windyIcon.svg"style="height:15px;margin-left:-4px;"></p>
-        <p><b>8</b></p>
+        <p id="fourhours"><b>8</b></p>
     </div>
     <div>
         <P><b>4PM</b></P>
@@ -92,13 +92,13 @@
         <div class="navbar-item"><img alt="rainy"  title="Rainy" src="Assets/HTML & CSS/Weather Icons/rainyIcon.svg"></div>
         <label class="navbar_item" style="color:var(--primary-white, white);"> Display Top
             <select class="cities_count">
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
+                <option class="dropdown">4</option>
+                <option class="dropdown">5</option>
+                <option class="dropdown">6</option>
+                <option class="dropdown">7</option>
+                <option class="dropdown">8</option>
+                <option class="dropdown">9</option>
+                <option class="dropdown">10</option>
 
             </select>
         </label>
@@ -106,7 +106,7 @@
     
 <div class="slider" >  
     <div class="left-arrow-div">
-        <img class="left-arrow" src="Assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt="">
+        <img  class="left-arrow" src="Assets/HTML & CSS/General Images & Icons/arrowUp.svg"  onclick="leftSlide();">
     </div>
 
 <ul class="card_container" style="list-style-type:none;">
@@ -170,7 +170,7 @@
 
     <div class="cont_title">Cities Across Continents at a Glance</div>
     <div class="city_item">
-            <div class="continent">Continent&nbsp;Name&nbsp;<img class="cont_icon" src="Assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></div>
+            <div class="continent">Continent Name<img class="cont_icon" src="Assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></div>
             <div class="temperature">Temperature&nbsp;<img class="cont_icon" src="Assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt=""></div>
         </div>
 </div>
