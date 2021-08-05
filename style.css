@@ -1,6 +1,8 @@
+@import 'vars.css';
+
 body {
   margin: 0;
-  background-image: url('Assets/HTML & CSS/General Images & Icons/background.svg');
+  background-image: url('assets/HTML & CSS/General Images & Icons/background.svg');
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -78,7 +80,7 @@ header img {
 
 .item-2 {
   font-family: 'Roboto', sans-serif;
-  color: var(--primary-white, white);
+  color: var(--primary-white);
   margin-top: 20px;
   height: 100px;
 
@@ -94,7 +96,7 @@ header img {
   margin-top: 20px;
   display: grid;
   grid-template-columns: auto auto auto auto auto auto;
-  color: var(--primary-white, white);
+  color: var(--primary-white);
   font-family: 'Roboto', sans-serif;
   text-align: center;
 }
@@ -134,19 +136,18 @@ header img {
   align-items: center;
 
   box-sizing: border-box;
-  position: relative;
 }
 .navbar_item {
   display: flex;
   flex-wrap: wrap;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  color: var(--primary-white, white);
+  color: var(--primary-white);
 }
 
 .navbar_title {
   text-align: center;
-  color: var(--primary-white, white);
+  color: var(--primary-white);
   height: 50px;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
@@ -163,14 +164,13 @@ header img {
 .cities_count {
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  height: 50px;
+  height: 20px;
   border-radius: 5px;
   box-shadow: 1px 1px black;
-  color: var(--primary-white, white);
+  color: var(--primary-white);
   justify-content: flex-end;
   background-color: transparent;
   width: 70px;
-  height: 20px;
 }
 .active {
   border-bottom: 5px solid dodgerblue;
@@ -200,7 +200,7 @@ header img {
 
   column-gap: 15px;
   padding: 0;
-  width: 100%;
+  width: calc(100% - 60px);
   overflow-x: scroll;
   overflow-y: visible;
 }
@@ -215,7 +215,7 @@ header img {
 }
 
 .card {
-  background-image: url('Assets/HTML & CSS/Icons for cities/london.svg');
+  background-image: url('   assets/HTML & CSS/Icons for cities/london.svg');
   background-position: bottom right;
   background-size: 3cm;
   background-repeat: no-repeat;
@@ -229,7 +229,7 @@ header img {
   font-size: large;
   margin-bottom: 30px;
   padding: 20px;
-  color: var(--primary-white, white);
+  color: var(--primary-white);
 
   border-radius: 5px;
 }
@@ -240,8 +240,7 @@ header img {
 }
 
 .card:hover {
-  width: 300px;
-
+  transform: scale(1.05);
   box-shadow: 7px 7px black;
 }
 
@@ -256,7 +255,6 @@ header img {
   align-items: center;
   justify-content: baseline;
   box-sizing: border-box;
-  position: relative;
   padding: 35px;
 }
 .cont_header {
@@ -266,7 +264,7 @@ header img {
   align-items: baseline;
 }
 .cont_title {
-  color: var(--primary-white, white);
+  color: var(--primary-white);
   font-family: 'Roboto', sans-serif;
 
   font-weight: bolder;
@@ -275,7 +273,7 @@ header img {
 }
 .city_item {
   font-family: 'Roboto', sans-serif;
-  color: var(--primary-white, white);
+  color: var(--primary-white);
   text-align: center;
   font-weight: bold;
 
@@ -309,7 +307,7 @@ header img {
   font-size: large;
   margin-bottom: 30px;
   padding: 20px;
-  color: var(--primary-white, white);
+  color: var(--primary-white);
 }
 .card_cont > div {
   color: white;
