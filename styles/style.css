@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  background-image: url('assets/HTML & CSS/General Images & Icons/background.svg');
+  background-image: url('../assets/HTML & CSS/General Images & Icons/background.svg');
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -130,7 +130,7 @@ header img {
   justify-content: flex-end;
   column-gap: 20px;
   position: sticky;
-  margin-right: 20px;
+  margin-right: 65px;
   margin-top: -88px;
 
   align-items: center;
@@ -162,15 +162,8 @@ header img {
   position: relative;
 }
 .cities_count {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  height: 20px;
-  border-radius: 5px;
-  box-shadow: 1px 1px black;
-  color: var(--primary-white);
-  justify-content: flex-end;
-  background-color: transparent;
-  width: 70px;
+  margin-left: 5px;
+  width: 35px;
 }
 .active {
   border-bottom: 5px solid dodgerblue;
@@ -262,6 +255,7 @@ header img {
   flex-wrap: wrap;
   justify-content: center;
   align-items: baseline;
+  column-gap: 100px;
 }
 .cont_title {
   color: var(--primary-white);
@@ -276,6 +270,8 @@ header img {
   color: var(--primary-white);
   text-align: center;
   font-weight: bold;
+
+  justify-content: flex-end;
 
   width: 100%;
   display: flex;
@@ -436,7 +432,7 @@ header img {
   }
   .cont_header {
     margin-left: 66px;
-    column-gap: 60px;
+    column-gap: 80px;
     flex-wrap: nowrap;
     justify-content: space-between;
   }

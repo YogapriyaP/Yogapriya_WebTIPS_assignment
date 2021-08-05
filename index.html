@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title title="Weather Forecasting App">Weather Forecasting App</title>
     <link rel="icon" href=" assets/HTML & CSS/Weather Icons/rainyIconBlack.svg" type="image/icon type">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
     
     <script type="text/javascript" src="script.js"></script>
     
@@ -17,7 +17,12 @@
     <header class="container">
     <div class="col-4 col-s-6 item-1">
     <img id="city-icon" src="  assets\HTML & CSS\Icons for cities\nome.svg" height=60px;>
-    <select name="city" class="select-city" id="city_dropdown"></select>
+    <select name="city" class="select-city" id="city_dropdown">
+        <option>New York</option>
+        <option>London</option>
+        <option>Nome</option>
+    </select>
+    
     <div class="date-time" >
         <p class="time"><large>9:21:</large><span>46</span><img  src="  assets/HTML & CSS/General Images & Icons/amState.svg" alt="AM"></p>
             
@@ -45,12 +50,7 @@
        
     </div>
     <div class="col-6 col-s-12 item-3">
-       <!-- <div>
-           <P><b>Now</b></P>
-           <p class="right_line">|</p>
-           <p><img alt="Cloudy" src="  assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
-           <p><b>6</b></p>
-       </div> -->
+       
        <div>
         <P><b>12PM</b></P>
         <p  class="right_line">|</p>
@@ -94,7 +94,7 @@
         <div class="navbar-item"><img alt="snowy" title="Snowy" src=" assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></div>
         <div class="navbar-item"><img alt="rainy"  title="Rainy" src=" assets/HTML & CSS/Weather Icons/rainyIcon.svg"></div>
         <label class="navbar_item" style="color:white;"> Display Top
-            <select class="cities_count">
+            <!-- <select class="cities_count">
                 <option class="dropdown">4</option>
                 <option class="dropdown">5</option>
                 <option class="dropdown">6</option>
@@ -103,7 +103,8 @@
                 <option class="dropdown">9</option>
                 <option class="dropdown">10</option>
 
-            </select>
+            </select> -->
+            <input type="number" class="cities_count" min="3" max="10" value="4">
         </label>
      </div>
     
