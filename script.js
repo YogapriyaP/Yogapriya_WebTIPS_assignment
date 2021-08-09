@@ -199,15 +199,10 @@ let mydata = {
   },
 };
 
-// Function to populate the city names into the dropdown
+//..................................Function to populate the city names into the dropdown........................//
+
 function PopulateDropDownList() {
   let cities = document.getElementById('city_dropdown');
-
-  // for (var i = 0; i < mydata.length; i++) {
-  //   var option = document.createElement('OPTION');
-  //   option.innerHTML = mydata[i].cityName;
-  //   cities.options.add(option);
-  // }
   for (var k in mydata) {
     var option = document.createElement('OPTION');
     option.innerHTML = mydata[k].cityName;
@@ -217,48 +212,128 @@ function PopulateDropDownList() {
 
 function ChangeValues() {
   let city = document.getElementById('city_dropdown');
-
   let val = city.value.toLowerCase();
   console.log(val);
-  ChangeDateandTime(val);
+  ChangeDate(val);
+  ChangeTime(val);
   ChangeTemp(val);
   ChangeTimeline(val);
   ChangeIcon(val);
 }
 
-//Functions to change values of the top section
+//....................................Functions to change values of the top section...........................//
 
 function ChangeIcon(val) {
   let icon = document.getElementById('city-icon');
-  icon.setAttribute('src', `Assets/HTML & CSS/Icons for cities/${val}.svg`);
+  icon.setAttribute('src', `assets/HTML & CSS/Icons for cities/${val}.svg`);
 }
 
 function ChangeTemp(val) {
   let tempinc = document.getElementById('temp-c');
+  console.log(tempinc);
   tempinc.innerHTML = mydata[val].temperature;
   let tempinf = document.getElementById('temp-f');
-  tempinf.innerHTML = TempcToTempF(mydata[val].temperature) + '°F';
+  tempinf.innerHTML = Math.round(TempcToTempF(mydata[val].temperature)) + '°F';
   let humidity = document.getElementById('humi_dity');
   humidity.innerHTML = mydata[val].humidity;
   let precipitation = document.getElementById('prec');
   precipitation.innerHTML = mydata[val].precipitation;
 }
 
-// Function to convert temperature from C to F
+//...................................Function to convert temperature from C to F..............................//
+
 function TempcToTempF(tempinc) {
-  return Math.round(parseInt(tempinc) * 9) / 5 + 32;
+  return (parseInt(tempinc) * 9) / 5 + 32;
 }
 
-function ChangeDateandTime(val) {
-  let date_ = (document.getElementsByClassName('date').innerHTML =
-    mydata[val].dateAndTime.split(',')[0]);
-  console.log(date_);
-  let time_ = (document.getElementsByClassName('time').innerHTML =
-    mydata[val].dateAndTime.split(',')[1]);
-  console.log(time_);
+//.......................................Function to change the time and state..............................//
+
+function ChangeTime(val) {
+  let time_ = document.getElementById('citytime');
+  let time = mydata[val].dateAndTime.split(',')[1];
+  time_.innerHTML = time.split(' ')[1];
+  let hours = time.split(':')[0];
+  let minutes = time.split(':')[1];
+  let seconds = time.split(':')[2];
+  second = parseInt(seconds);
+  let state = seconds.split(' ')[1];
+  let s_icon = document.getElementById('ampmstate');
+  console.log(s_icon);
+  if (state == 'AM') {
+    s_icon.setAttribute(
+      'src',
+      'assets/HTML & CSS/General Images & Icons/amState.svg'
+    );
+  } else if (state == 'PM') {
+    s_icon.setAttribute(
+      'src',
+      'assets/HTML & CSS/General Images & Icons/pmState.svg'
+    );
+  }
+  ChangeTimelineTime(hours, state, 'one_hour', 1);
+  ChangeTimelineTime(hours, state, 'two_hour', 2);
+  ChangeTimelineTime(hours, state, 'three_hour', 3);
+  ChangeTimelineTime(hours, state, 'four_hour', 4);
 }
+
+function ChangeTimelineTime(hours, state, id, i) {
+  let h = document.getElementById(id);
+  let st_twelve;
+  let state_;
+  if (state == 'AM') {
+    st_twelve = 'PM';
+  } else {
+    st_twelve = 'AM';
+  }
+  if (hours == 12) {
+    h.innerHTML = +hours + i - 12 + `${state}`;
+  } else if (+hours + i == 12) {
+    let hour_twelve = +hours + i;
+    h.innerHTML = +hours + i + `${st_twelve}`;
+  } else if (+hours + i > 12) {
+    if (st_twelve == 'AM') {
+      state_ = 'AM';
+    } else {
+      state_ = 'PM';
+    }
+    h.innerHTML = +hours + i - 12 + `${state_}`;
+  } else {
+    // console.log(+hours + i);
+    h.innerHTML = +hours + i + `${state}`;
+  }
+}
+
+//......................................Function to change the Date......................................//
+
+function ChangeDate(val) {
+  let date_ = document.getElementById('citydate');
+  mydate = mydata[val].dateAndTime.split(',')[0];
+  let date = mydate.split('/')[1];
+  let month = mydate.split('/')[0];
+  let year = mydate.split('/')[2];
+  var months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  month = months[month - 1];
+  date_.innerHTML = date + '-' + month + '-' + year;
+}
+
+//.......................Function to Change the weather details in the timeline for next 4 hours.................//
 
 function ChangeTimeline(val) {
+  let now = (document.getElementById('now').innerHTML =
+    mydata[val].temperature);
   let one = (document.getElementById('onehour').innerHTML =
     mydata[val].nextFiveHrs[0]);
   let two = (document.getElementById('twohours').innerHTML =
@@ -267,10 +342,34 @@ function ChangeTimeline(val) {
     mydata[val].nextFiveHrs[2]);
   let four = (document.getElementById('fourhours').innerHTML =
     mydata[val].nextFiveHrs[3]);
+  let temp = now.split('°')[0];
+  let temp1 = one.split('°')[0];
+  let temp2 = two.split('°')[0];
+  let temp3 = three.split('°')[0];
+  let temp4 = four.split('°')[0];
+  ChangeWeatherIcon(temp, 'icon_now');
+  ChangeWeatherIcon(temp1, 'icon_one');
+  ChangeWeatherIcon(temp2, 'icon_two');
+  ChangeWeatherIcon(temp3, 'icon_three');
+  ChangeWeatherIcon(temp4, 'icon_four');
 }
 
-// Function to left and right slide
+//........................Function to Change the weather Icon in the timeline.............................//
 
-function leftSlide() {
-  console.log('leftarrow');
+function ChangeWeatherIcon(temp, id) {
+  let weather_icon = document.getElementById(id);
+  weather_icon.setAttribute(
+    'src',
+    ` assets/HTML & CSS/Weather Icons/${
+      temp < 0
+        ? 'snowFlakeIcon'
+        : temp < 18
+        ? 'rainyIcon'
+        : temp <= 22
+        ? 'windyIcon'
+        : temp <= 29
+        ? 'cloudyIcon'
+        : 'sunnyIcon'
+    }.svg`
+  );
 }
