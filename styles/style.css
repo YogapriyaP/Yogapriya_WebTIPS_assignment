@@ -208,7 +208,7 @@ header img {
 }
 
 .card {
-  background-image: url('   assets/HTML & CSS/Icons for cities/london.svg');
+  background-image: url('../assets/HTML & CSS/Icons for cities/london.svg');
   background-position: bottom right;
   background-size: 3cm;
   background-repeat: no-repeat;
