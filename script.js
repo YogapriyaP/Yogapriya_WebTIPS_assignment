@@ -199,29 +199,29 @@ let mydata = {
   },
 };
 
-//..................................Function to populate the city names into the dropdown........................//
+//..................................Event to populate the city names into the dropdown........................//
 
-function PopulateDropDownList() {
+let city_list = function PopulateDropDownList() {
   let cities = document.getElementById('city_dropdown');
   for (var k in mydata) {
     var option = document.createElement('OPTION');
     option.innerHTML = mydata[k].cityName;
     cities.options.add(option);
   }
-}
+};
+window.addEventListener('load', city_list);
+
+//....................................Functions to change values of the top section...........................//
 
 function ChangeValues() {
   let city = document.getElementById('city_dropdown');
   let val = city.value.toLowerCase();
-  console.log(val);
   ChangeDate(val);
   ChangeTime(val);
   ChangeTemp(val);
   ChangeTimeline(val);
   ChangeIcon(val);
 }
-
-//....................................Functions to change values of the top section...........................//
 
 function ChangeIcon(val) {
   let icon = document.getElementById('city-icon');
@@ -373,3 +373,5 @@ function ChangeWeatherIcon(temp, id) {
     }.svg`
   );
 }
+
+//.............................................Middle Section..............................................//
