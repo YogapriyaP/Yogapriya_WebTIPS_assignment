@@ -4,10 +4,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title title="Weather Forecasting App">Weather Forecasting App</title>
-    <link rel="icon" href=" assets/HTML & CSS/Weather Icons/rainyIconBlack.svg" type="image/icon type">
+    <link rel="icon" href="assets/HTML & CSS/Weather Icons/weather.svg" type="image/icon type">
     <link rel="stylesheet" href="styles/style.css">
     
-    <script type="text/javascript" src="script.js"></script>
+    <script type="module" src="/scripts/script.js"></script>
+    
     
 
 </head>
@@ -17,8 +18,8 @@
 <header class="container">
     <div class="col-4 col-s-6 item-1">
     <img id="city-icon" src="assets/HTML & CSS/Icons for cities/nome.svg" height=60px;>
-    
-    <select name="city" class="select-city" id="city_dropdown" onclick="ChangeValues();"></select>
+    <input list="city_dropdown" class="select-city" type="text" name="city" id="city_input" />
+     <datalist id="city_dropdown"></datalist>
     <div class="date-time" >
         <p class="time" id="citytime">9:21:46</p>
             <img id="ampmstate" src="assets/HTML & CSS/General Images & Icons/pmState.svg" />
@@ -39,7 +40,7 @@
         <p id="temp-f">39°F</p>
     </div>
         <div>
-        <p>Precipitation</p>
+        <p style="margin-left: 5px;">Precipitation</p>
         <p id="prec">8%</p>
     </div>
        
@@ -48,31 +49,31 @@
         <div>
             <p>Now</p>
             <p  class="right_line">|</p>
-            <p><img id="icon_now" alt="Cloudy" src="  assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
+            <p><img class="timeline-icon" id="icon_now"  src="  assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
             <p id="now">4°C</p>
         </div>
        <div>
         <P id="one_hour">10PM</P>
         <p  class="right_line">|</p>
-        <p><img id="icon_one" alt="Cloudy" src=" assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
+        <p><img class="timeline-icon" id="icon_one"  src=" assets/HTML & CSS/Weather Icons/cloudyIcon.svg"></p>
         <p id="onehour">6°C</p>
     </div>
     <div>
         <P id="two_hour">11PM</P>
         <p  class="right_line">|</p>
-        <p><img id="icon_two" alt="Cloudy" src="  assets/HTML & CSS/Weather Icons/windyIcon.svg"style="height:15px;margin-left:-4px;"></p>
+        <p><img class="timeline-icon" id="icon_two"  src="  assets/HTML & CSS/Weather Icons/windyIcon.svg"></p>
         <p id="twohours">7°C</p>
     </div>
     <div>
         <p id="three_hour">12AM</p>
         <p  class="right_line">|</p>
-        <p><img id="icon_three" alt="Cloudy" src="  assets/HTML & CSS/Weather Icons/cloudyIcon.svg"style="height:15px;margin-left:-4px;"></p>
+        <p><img class="timeline-icon" id="icon_three" src="  assets/HTML & CSS/Weather Icons/cloudyIcon.svg"></p>
         <p id="threehours">11°C</p>
     </div>
     <div>
         <p id="four_hour">1AM</p>
         <p  class="right_line">|</p>
-        <p><img id="icon_four" alt="Cloudy" src="  assets/HTML & CSS/Weather Icons/windyIcon.svg"style="height:15px;margin-left:-4px;"></p>
+        <p><img class="timeline-icon" id="icon_four"  src="  assets/HTML & CSS/Weather Icons/windyIcon.svg"></p>
         <p id="fourhours">2°C</p>
     </div>
    
@@ -84,22 +85,34 @@
        
       
         <div class="navbar_title">Top Cities Around The World</div>    
-        <div class="navbar_container" id="active">
-        <div class="navbar-item" onclick="activate();"><img alt="sunny" title="Sunny" src=" assets/HTML & CSS/Weather Icons/sunnyIcon.svg"></div>
-        <div class="navbar-item" onclick="activate();" ><img alt="snowy" title="Snowy" src=" assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></div>
-        <div class="navbar-item"  onclick="activate();"><img alt="rainy"  title="Rainy" src=" assets/HTML & CSS/Weather Icons/rainyIcon.svg"></div>
-        <label class="navbar_item" style="color:white;"> Display Top
+    <div id="nav_div" class="navbar_container">
+        <button class="navbar-item" id="sunny_icon"><img alt="sunny" title="Sunny" src=" assets/HTML & CSS/Weather Icons/sunnyIcon.svg"></button>
+        <button class="navbar-item" id="snowy_icon"><img alt="snowy" title="Snowy" src=" assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></button>
+        <button class="navbar-item"id="rainy_icon"><img alt="rainy"  title="Rainy" src=" assets/HTML & CSS/Weather Icons/rainyIcon.svg"></button>
+        <label class="navbar-item" style="color:white;"> Display Top
         <input type="number" class="cities_count" min="3" max="10" value="4">
         </label>
      </div>
     
 <div class="slider" >  
-    <div class="left-arrow-div">
+    <button class="left-arrow-div" id="left-scroll">
         <img  class="left-arrow" src="assets/HTML & CSS/General Images & Icons/backwardArrow.svg">
-    </div>
+    </button>
 
-<ul class="card_container" style="list-style-type:none;">
+<ul class="card_container" id="card-container" style="list-style-type:none;">
   
+    
+    <li class="card">
+        <div class="card-title">
+        <p><b>London</b></p>
+        <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/sunnyIcon.svg" width="20px" height="15px"> 25<span>&#8451;</span></p>
+    </div>
+        <p>10.00 AM</p>
+        <p>22-JULY-2021</p>
+        <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/humidityIcon.svg" width="20px"  height="15px"> 53 %</p>
+        <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> 10 %</p>
+
+    </li>
     <li class="card">
         <div class="card-title">
         <p><b>London</b></p>
@@ -146,9 +159,9 @@
 
     </li>
     </ul>
-    <div class="right-arrow-div">
+    <button class="right-arrow-div" id="right-scroll">
         <img class="right-arrow" src="assets/HTML & CSS/General Images & Icons/forwardArrow.svg" alt="">
-    </div>
+    </button>
 </div> 
     
     
@@ -160,7 +173,7 @@
 
     <div class="cont_title">Cities Across Continents at a Glance</div>
     <div class="city_item">
-            <div class="continent">Continent Name<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></div>
+            <div class="continent">Continent Name&nbsp;<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></div>
             <div class="temperature">Temperature&nbsp;<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt=""></div>
         </div>
 </div>

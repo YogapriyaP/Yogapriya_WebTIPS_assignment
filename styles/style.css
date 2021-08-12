@@ -21,7 +21,7 @@ header img {
   background: transparent;
   border-color: gray;
   width: 150px;
-  height: 30px;
+  height: 25px;
   border-radius: 5px;
   box-shadow: 3px 3px black;
   z-index: -1;
@@ -40,6 +40,13 @@ header img {
   height: 50px;
   margin-left: 10px;
   margin-top: 10px;
+}
+.timeline-icon {
+  height: 15px;
+  margin-left: -4px;
+}
+.timeline-icon:hover {
+  transform: scale3d(2, 2, 2);
 }
 
 .time {
@@ -146,12 +153,14 @@ header img {
 
   box-sizing: border-box;
 }
-.navbar_item {
+.navbar-item {
   display: flex;
   flex-wrap: wrap;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   color: var(--primary-white);
+  background-color: transparent;
+  border: transparent;
 }
 
 .navbar_title {
@@ -194,9 +203,15 @@ header img {
   display: inline-block;
 }
 
+.left-arrow-div,
+.right-arrow-div {
+  background-color: transparent;
+  border: transparent;
+}
+
 .card_container {
   display: flex;
-  column-gap: 15px;
+  column-gap: 25px;
   padding: 25px;
   width: calc(100% - 60px);
   overflow-x: scroll;
@@ -219,7 +234,7 @@ header img {
   background-repeat: no-repeat;
   background-color: #202020;
   box-shadow: 5px 5px black;
-  min-width: 250px;
+  min-width: 200px;
 
   margin-top: 50px;
   font-family: 'Roboto', sans-serif;
