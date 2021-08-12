@@ -21,7 +21,7 @@ header img {
   background: transparent;
   border-color: gray;
   width: 150px;
-  height: 30px;
+  height: 25px;
   border-radius: 5px;
   box-shadow: 3px 3px black;
   z-index: -1;
@@ -41,6 +41,13 @@ header img {
   margin-left: 10px;
   margin-top: 10px;
 }
+.timeline-icon {
+  height: 15px;
+  margin-left: -4px;
+}
+.timeline-icon:hover {
+  transform: scale3d(2, 2, 2);
+}
 
 .time {
   font-size: 30px;
@@ -48,6 +55,7 @@ header img {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   color: #fff461;
+  margin-left: -5px;
 }
 
 .date {
@@ -55,7 +63,8 @@ header img {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   color: #fff461;
-  margin-top: -22px;
+  margin-top: -35px;
+  margin-left: -5px;
 }
 
 /*Top section flex*/
@@ -76,6 +85,13 @@ header img {
 
 .item-1 > img {
   margin-top: 10px;
+  z-index: -1;
+}
+
+.date-time > img {
+  margin-left: 150px;
+  margin-top: -83px;
+  margin-bottom: 48px;
 }
 
 .item-2 {
@@ -137,12 +153,14 @@ header img {
 
   box-sizing: border-box;
 }
-.navbar_item {
+.navbar-item {
   display: flex;
   flex-wrap: wrap;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   color: var(--primary-white);
+  background-color: transparent;
+  border: transparent;
 }
 
 .navbar_title {
@@ -176,23 +194,25 @@ header img {
 
 .left-arrow,
 .right-arrow {
+  margin: 10px;
+  padding: 10px 10px;
   height: 20px;
-  padding: 0px 10px;
+  width: 20px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
 }
 
-.left-arrow {
-  transform: rotate(-90deg);
-}
-
-.right-arrow {
-  transform: rotate(90deg);
+.left-arrow-div,
+.right-arrow-div {
+  background-color: transparent;
+  border: transparent;
 }
 
 .card_container {
   display: flex;
-
-  column-gap: 15px;
-  padding: 0;
+  column-gap: 25px;
+  padding: 25px;
   width: calc(100% - 60px);
   overflow-x: scroll;
   overflow-y: visible;
@@ -214,7 +234,7 @@ header img {
   background-repeat: no-repeat;
   background-color: #202020;
   box-shadow: 5px 5px black;
-  min-width: 250px;
+  min-width: 200px;
 
   margin-top: 50px;
   font-family: 'Roboto', sans-serif;
