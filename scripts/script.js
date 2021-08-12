@@ -17,6 +17,7 @@ let city_list = function PopulateDropDownList() {
 window.addEventListener('load', city_list);
 
 //....................................Functions to change values of the top section...........................//
+
 window.addEventListener('load', defaultValue);
 function defaultValue() {
   let default_city = city_key[0];
