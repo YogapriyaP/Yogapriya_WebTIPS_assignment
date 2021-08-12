@@ -212,7 +212,7 @@ let city_list = function PopulateDropDownList() {
   }
   city_key.sort();
   for (let i in city_key) {
-    cities.innerHTML += `<option value="${city_key[i][0].toUpperCase()}">`;
+    cities.innerHTML += `<option value="${city_key[i].toUpperCase()}">`;
   }
 };
 window.addEventListener('load', city_list);
