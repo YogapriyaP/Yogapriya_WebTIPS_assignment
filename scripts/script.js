@@ -1,4 +1,7 @@
 import { mydata } from './data.js';
+import { changeActiveState } from './Active.js';
+
+// import { cityArray } from './sort.js';
 
 //..................................Event to populate the city names into the dropdown........................//
 var city_key = [];
@@ -9,6 +12,7 @@ let city_list = function PopulateDropDownList() {
   for (var k in mydata) {
     city_key.push(k);
   }
+
   city_key.sort();
   for (let i in city_key) {
     cities.innerHTML += `<option value="${city_key[i].toUpperCase()}">`;
@@ -21,7 +25,7 @@ window.addEventListener('load', city_list);
 window.addEventListener('load', defaultValue);
 function defaultValue() {
   let default_city = city_key[0];
-  ChangeDate(default_city);
+  ChangeDate(default_city, 'citydate');
   ChangeTime(default_city);
   ChangeTemp(default_city);
   ChangeTimeline(default_city);
@@ -72,7 +76,7 @@ function ChangeValues() {
     document.getElementById('icon_four').setAttribute('src', '');
   } else {
     document.getElementById('citytime').style.visibility = 'visible';
-    ChangeDate(val);
+    ChangeDate(val, 'citydate');
     ChangeTime(val);
     ChangeTemp(val);
     ChangeTimeline(val);
@@ -136,6 +140,7 @@ function ChangeTime(val) {
   ChangeRunTime(hours, minutes, second, state);
 }
 let timer;
+
 function ChangeRunTime(hours, minutes, second, state) {
   clearInterval(timer);
   timer = setInterval(myTimer, 1000);
@@ -144,21 +149,19 @@ function ChangeRunTime(hours, minutes, second, state) {
     second++;
     if (second == 60) {
       second = 0;
-      // clearInterval(timer);
       minutes++;
-      // setInterval(myTimer, 1000);
     }
     if (minutes == 60) {
       minutes = 0;
-      // clearInterval(timer);
       hours++;
       // setInterval(myTimer, 1000);
     }
-    console.log(minutes + ':' + second);
+
     function checkTime(i) {
+      // add zero in front of numbers < 10
       if (i < 10) {
         i = '0' + i;
-      } // add zero in front of numbers < 10
+      }
       return i;
     }
 
@@ -200,8 +203,8 @@ function ChangeTimelineTime(hours, state, id, i) {
 
 //......................................Function to change the Date......................................//
 
-function ChangeDate(val) {
-  let date_ = document.getElementById('citydate');
+function ChangeDate(val, id) {
+  let date_ = document.getElementById(id);
   let mydate = mydata[val].dateAndTime.split(',')[0];
   let date = mydate.split('/')[1];
   let month = mydate.split('/')[0];
@@ -275,17 +278,29 @@ function ChangeWeatherIcon(temp, id) {
 
 window.addEventListener('load', middleSection);
 
+
 function middleSection(val) {
   LeftandRightScroll();
-  changeActiveState(val);
+  
+  setTimeout(changeActiveState, 100);
+  
+  
+
 }
+
+
+  
+  
 
 function LeftandRightScroll() {
   (function getElements() {
-    var left = document.getElementById('left-scroll');
-    var right = document.getElementById('right-scroll');
+    let left = document.getElementById('left-scroll');
+    let right = document.getElementById('right-scroll');
     left.addEventListener('click', leftScroll);
     right.addEventListener('click', rightScroll);
+    
+  
+   
   })();
 
   function leftScroll() {
@@ -294,52 +309,8 @@ function LeftandRightScroll() {
   function rightScroll() {
     document.getElementById('card-container').scrollLeft += 150;
   }
+  // let scroll=document.getElementById('card-container');
+  
+   
+ 
 }
-
-//..................................Function to change the active state of the weather Icon in the navigation bar.................//
-
-function changeActiveState() {
-  var icon_sunny = document.getElementById('sunny_icon');
-  var icon_snowy = document.getElementById('snowy_icon');
-  var icon_rainy = document.getElementById('rainy_icon');
-  icon_sunny.addEventListener('click', activeSunny);
-  icon_snowy.addEventListener('click', activeSnowy);
-  icon_rainy.addEventListener('click', activeRainy);
-
-  let temp = [];
-  let temp_sunny = [];
-  let temp_snowy = [];
-  let temp_rainy = [];
-  for (let i in mydata) {
-    temp.push(mydata[i].temperature.split('°')[0]);
-  }
-  // console.log(temp_key[0]);
-  // for(let i in temp)
-  // {
-  //   if(temp[i]>29)
-  //   {
-  //     temp_sunny.push(temp[i]);
-  //   }
-  //   else if(temp[i]<=28)
-  // }
-
-  function activeSunny() {
-    icon_sunny.setAttribute('class', 'navbar-item active');
-    icon_rainy.setAttribute('class', 'navbar-item');
-    icon_snowy.setAttribute('class', 'navbar-item');
-  }
-  function activeSnowy() {
-    icon_snowy.setAttribute('class', 'navbar-item active');
-    icon_sunny.setAttribute('class', 'navbar-item');
-    icon_rainy.setAttribute('class', 'navbar-item');
-  }
-  function activeRainy() {
-    icon_rainy.setAttribute('class', 'navbar-item active');
-    icon_sunny.setAttribute('class', 'navbar-item');
-    icon_snowy.setAttribute('class', 'navbar-item');
-  }
-}
-
-//...................................Function to display the cards based on the input value.....//
-
-function DisplayTopCities() {}

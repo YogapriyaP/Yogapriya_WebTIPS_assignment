@@ -6,11 +6,7 @@
     <title title="Weather Forecasting App">Weather Forecasting App</title>
     <link rel="icon" href="assets/HTML & CSS/Weather Icons/weather.svg" type="image/icon type">
     <link rel="stylesheet" href="styles/style.css">
-    
     <script type="module" src="/scripts/script.js"></script>
-    
-    
-
 </head>
 <body>
     <!-- Top section to display date,time,temperature,humidity,precipitation and timeline -->
@@ -90,7 +86,7 @@
         <button class="navbar-item" id="snowy_icon"><img alt="snowy" title="Snowy" src=" assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></button>
         <button class="navbar-item"id="rainy_icon"><img alt="rainy"  title="Rainy" src=" assets/HTML & CSS/Weather Icons/rainyIcon.svg"></button>
         <label class="navbar-item" style="color:white;"> Display Top
-        <input type="number" class="cities_count" min="3" max="10" value="4">
+        <input type="number" id="input-display" class="cities_count" min="3" max="10" value="4">
         </label>
      </div>
     
@@ -102,7 +98,7 @@
 <ul class="card_container" id="card-container" style="list-style-type:none;">
   
     
-    <li class="card">
+     <li class="card">
         <div class="card-title">
         <p><b>London</b></p>
         <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/sunnyIcon.svg" width="20px" height="15px"> 25<span>&#8451;</span></p>
@@ -112,7 +108,7 @@
         <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/humidityIcon.svg" width="20px"  height="15px"> 53 %</p>
         <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> 10 %</p>
 
-    </li>
+    </li> 
     <li class="card">
         <div class="card-title">
         <p><b>London</b></p>
@@ -157,7 +153,7 @@
        
         <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> 10 %</p>
 
-    </li>
+    </li> 
     </ul>
     <button class="right-arrow-div" id="right-scroll">
         <img class="right-arrow" src="assets/HTML & CSS/General Images & Icons/forwardArrow.svg" alt="">
@@ -173,8 +169,8 @@
 
     <div class="cont_title">Cities Across Continents at a Glance</div>
     <div class="city_item">
-            <div class="continent">Continent Name&nbsp;<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></div>
-            <div class="temperature">Temperature&nbsp;<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt=""></div>
+            <button class="continent">Continent Name&nbsp;<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></button>
+            <button class="temperature">Temperature&nbsp;<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt=""></button>
         </div>
 </div>
 
