@@ -201,8 +201,8 @@ header img {
   background-color: white;
   border-radius: 50%;
   display: inline-block;
+  
 }
-
 .left-arrow-div,
 .right-arrow-div {
   background-color: transparent;
@@ -215,7 +215,7 @@ header img {
   padding: 25px;
   width: calc(100% - 60px);
   overflow-x: scroll;
-  overflow-y: visible;
+  
 }
 .card_container::-webkit-scrollbar {
   display: none;
@@ -252,10 +252,18 @@ header img {
   width: 80px;
 }
 
+
+
+
+
+
+
 .card:hover {
   transform: scale(1.05);
   box-shadow: 7px 7px black;
 }
+
+
 
 .cities_continent {
   display: flex;
@@ -302,9 +310,13 @@ header img {
   font-size: 20px;
   font-weight: 200;
   margin: 13px;
+  background-color: transparent;
+  border:transparent;
+  color: white;
 }
 .cont_icon {
   height: 15px;
+ 
 }
 .flex_container {
   display: flex;
@@ -406,6 +418,7 @@ header img {
     justify-content: center;
     column-width: 20px;
   }
+  
 }
 
 @media only screen and (min-width: 768px) {
