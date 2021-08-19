@@ -8,6 +8,7 @@ export let mydata = {
     precipitation: '8%',
     nextFiveHrs: ['6°C', '7°C', '11°C', '2°C'],
   },
+  
   newyork: {
     cityName: 'NewYork',
     dateAndTime: '4/1/2020,1:21:46 AM',
@@ -198,5 +199,3 @@ export let mydata = {
     nextFiveHrs: ['-70°C', '-70°C', '-66°C', '-71°C'],
   },
 };
-
-
