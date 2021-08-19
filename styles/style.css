@@ -44,10 +44,9 @@ header img {
 .timeline-icon {
   height: 15px;
   margin-left: -4px;
+  animation: humidity_animation 6s linear 0s infinite;
 }
-.timeline-icon:hover {
-  transform: scale3d(2, 2, 2);
-}
+
 
 .time {
   font-size: 30px;
@@ -100,7 +99,6 @@ header img {
   margin-top: 20px;
   height: 100px;
 
-  font-weight: bolder;
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -120,6 +118,7 @@ header img {
 .item-3 > img {
   height: 15px;
   width: 15px;
+  
 }
 /*middle section navigation bar*/
 
@@ -182,6 +181,9 @@ header img {
 .cities_count {
   margin-left: 5px;
   width: 35px;
+  background-color: #101010;
+  color: white;
+  outline: none;
 }
 .active {
   border-bottom: 5px solid dodgerblue;
@@ -201,7 +203,6 @@ header img {
   background-color: white;
   border-radius: 50%;
   display: inline-block;
-  
 }
 .left-arrow-div,
 .right-arrow-div {
@@ -215,7 +216,6 @@ header img {
   padding: 25px;
   width: calc(100% - 60px);
   overflow-x: scroll;
-  
 }
 .card_container::-webkit-scrollbar {
   display: none;
@@ -250,20 +250,19 @@ header img {
   margin-top: -90px;
   margin-left: 60px;
   width: 80px;
+  
 }
-
-
-
-
-
-
+.card-title > p >img{
+  animation: humidity_animation 6s linear 0s infinite;
+}
+.card > p >img{
+  animation: humidity_animation 6s linear 0s infinite;
+}
 
 .card:hover {
   transform: scale(1.05);
   box-shadow: 7px 7px black;
 }
-
-
 
 .cities_continent {
   display: flex;
@@ -271,7 +270,7 @@ header img {
   column-gap: 20px;
   background-color: #101010;
   position: sticky;
-  margin-right: 10px;
+
   text-align: center;
   align-items: center;
   justify-content: baseline;
@@ -288,10 +287,8 @@ header img {
 .cont_title {
   color: var(--primary-white);
   font-family: 'Roboto', sans-serif;
-
-  font-weight: bolder;
-
   text-align: center;
+  font-size: large;
 }
 .city_item {
   font-family: 'Roboto', sans-serif;
@@ -311,12 +308,11 @@ header img {
   font-weight: 200;
   margin: 13px;
   background-color: transparent;
-  border:transparent;
+  border: transparent;
   color: white;
 }
 .cont_icon {
   height: 15px;
- 
 }
 .flex_container {
   display: flex;
@@ -341,9 +337,14 @@ header img {
   color: white;
   font-family: 'Roboto', sans-serif;
 }
+.temperature-icon {
+  height: 20px;
+  animation: humidity_animation 6s linear 0s infinite;
+}
 
-.humidity_icon {
+.cont-humidity img {
   height: 1em;
+  animation: humidity_animation 6s linear 0s infinite;
 }
 .cont_city_title {
   display: flex;
@@ -418,7 +419,6 @@ header img {
     justify-content: center;
     column-width: 20px;
   }
-  
 }
 
 @media only screen and (min-width: 768px) {
@@ -462,14 +462,33 @@ header img {
   .city_item {
     justify-content: flex-end;
     column-width: 20px;
+    margin-right: 35px;
   }
   .cont_header {
-    margin-left: 66px;
+    margin-left: 40px;
     column-gap: 80px;
     flex-wrap: nowrap;
     justify-content: space-between;
   }
   .cont_title {
     width: 600px;
+  }
+}
+
+@keyframes humidity_animation {
+  0% {
+    transform: rotateY(0deg);
+  }
+  25% {
+    transform: rotateY(90deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  75% {
+    transform: rotateY(270deg);
+  }
+  100% {
+    transform: rotateY(360deg);
   }
 }
