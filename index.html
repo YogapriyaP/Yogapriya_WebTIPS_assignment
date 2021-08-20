@@ -24,7 +24,7 @@
     </div>
     <div class="col-2 col-s-6 item-2">
         <div class="line">
-        <p>Temp <span>&#8451;</span></p>
+        <p>Temp °C</p>
         <p id="temp-c">-2°C</p>
     </div>
        <div>
@@ -169,12 +169,12 @@
 
     <div class="cont_title">Cities Across Continents at a Glance</div>
     <div class="city_item">
-            <button class="continent">Continent Name&nbsp;<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></button>
-            <button class="temperature">Temperature&nbsp;<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt=""></button>
+            <button class="continent" id="sort-continent">Continent Name&nbsp;<img class="cont_icon" id="icon-cont" src=" assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></button>
+            <button class="temperature" id="sort-temperature">Temperature&nbsp;<img class="cont_icon" id="icon-temp" src=" assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt=""></button>
         </div>
 </div>
 
-    <ul class="flex_container" style="list-style-type:none;">
+    <ul class="flex_container" id="continent-container" style="list-style-type:none;">
         <li class="card_cont">
             <div class="cont_city_title">
                 <div class="cont_name">Asia</div>

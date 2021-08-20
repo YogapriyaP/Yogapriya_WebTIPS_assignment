@@ -1,5 +1,10 @@
 import { mydata } from './data.js';
 import { changeActiveState } from './Active.js';
+// import { sortCities } from './sort.js';
+import { sortContTemp } from './sort.js';
+sortContTemp();
+
+
 
 // import { cityArray } from './sort.js';
 
@@ -14,6 +19,7 @@ let city_list = function PopulateDropDownList() {
   }
 
   city_key.sort();
+  
   for (let i in city_key) {
     cities.innerHTML += `<option value="${city_key[i].toUpperCase()}">`;
   }
@@ -93,9 +99,9 @@ function ChangeIcon(val) {
 }
 
 function ChangeTemp(val) {
-  // if(val==undefined)
+ 
   let tempinc = document.getElementById('temp-c');
-  console.log(tempinc);
+  
   tempinc.innerHTML = mydata[val].temperature;
   let tempinf = document.getElementById('temp-f');
   tempinf.innerHTML = Math.round(TempcToTempF(mydata[val].temperature)) + '°F';
@@ -124,7 +130,7 @@ function ChangeTime(val) {
 
   let state = seconds.split(' ')[1];
   let s_icon = document.getElementById('ampmstate');
-  console.log(s_icon);
+  
   if (state == 'AM') {
     s_icon.setAttribute(
       'src',
@@ -281,16 +287,8 @@ window.addEventListener('load', middleSection);
 
 function middleSection(val) {
   LeftandRightScroll();
-  
   setTimeout(changeActiveState, 100);
-  
-  
-
 }
-
-
-  
-  
 
 function LeftandRightScroll() {
   (function getElements() {
@@ -299,11 +297,9 @@ function LeftandRightScroll() {
     left.addEventListener('click', leftScroll);
     right.addEventListener('click', rightScroll);
     
-  
-   
-  })();
+})();
 
-  function leftScroll() {
+ function leftScroll() {
     document.getElementById('card-container').scrollLeft -= 150;
   }
   function rightScroll() {
