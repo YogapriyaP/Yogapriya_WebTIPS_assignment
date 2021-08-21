@@ -1,4 +1,3 @@
-
 import { mydata } from './data.js';
 let city_array = [];
 for (let key in mydata) {
@@ -53,7 +52,7 @@ export function changeActiveState() {
     icon_id = icon_sunny.id;
     document.getElementById('card-container').innerHTML = ' ';
     temp_sunny.sort((a, b) => {
-      return +(b.temperature.split('°')[0]) - +(a.temperature.split('°')[0]);
+      return +b.temperature.split('°')[0] - +a.temperature.split('°')[0];
     });
     let len = document.getElementById('input-display').value;
 
@@ -80,7 +79,7 @@ export function changeActiveState() {
           <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/humidityIcon.svg" width="20px"  height="15px"> ${
             temp_sunny[k].humidity.split('%')[0]
           } %</p>
-          <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> ${
+          <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/precipitationIcon.svg" width="20px"  height="15px"> ${
             temp_sunny[k].precipitation.split('%')[0]
           } %</p>
   
@@ -101,7 +100,7 @@ export function changeActiveState() {
 
     document.getElementById('card-container').innerHTML = ' ';
     temp_snowy.sort((a, b) => {
-      return +(b.precipitation.split('%')[0]) - +(a.precipitation.split('%')[0]);
+      return +b.precipitation.split('%')[0] - +a.precipitation.split('%')[0];
     });
     let len = document.getElementById('input-display').value;
 
@@ -128,7 +127,7 @@ export function changeActiveState() {
           <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/humidityIcon.svg" width="20px"  height="15px"> ${
             temp_snowy[k].humidity.split('%')[0]
           } %</p>
-          <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> ${
+          <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/precipitationIcon.svg" width="20px"  height="15px"> ${
             temp_snowy[k].precipitation.split('%')[0]
           } %</p>
   
@@ -149,7 +148,7 @@ export function changeActiveState() {
 
     document.getElementById('card-container').innerHTML = ' ';
     temp_rainy.sort((a, b) => {
-      return +(b.humidity.split('%')[0]) - +(a.humidity.split('%')[0]);
+      return +b.humidity.split('%')[0] - +a.humidity.split('%')[0];
     });
     let len = document.getElementById('input-display').value;
 
@@ -176,7 +175,7 @@ export function changeActiveState() {
           <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/humidityIcon.svg" width="20px"  height="15px"> ${
             temp_rainy[k].humidity.split('%')[0]
           } %</p>
-          <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> ${
+          <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/precipitationIcon.svg" width="20px"  height="15px"> ${
             temp_rainy[k].precipitation.split('%')[0]
           } %</p>
   
@@ -187,16 +186,16 @@ export function changeActiveState() {
       getTime('.card_container');
     }, 60000);
   }
-  display.addEventListener('change', DisplayCity);
+  display.onchange=function(){
+    DisplayCity.call(this);
+  }
 
   function DisplayCity() {
     if (icon_id == 'sunny_icon') {
       activeSunny();
-    
     }
     if (icon_id == 'snowy_icon') {
       activeSnowy();
-    
     }
     if (icon_id == 'rainy_icon') {
       activeRainy();
@@ -228,7 +227,7 @@ export function changeActiveState() {
 
 // Function to run the time on the cards
 
- function getTime(slider) {
+function getTime(slider) {
   let cards = document.querySelector(slider).children;
   for (let i = 0; i < cards.length; i++) {
     let value = cards[i].children[1].innerText;
