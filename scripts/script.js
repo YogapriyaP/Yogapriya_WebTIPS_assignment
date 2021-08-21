@@ -8,7 +8,7 @@ sortContTemp();
 
 //..................................Event to populate the city names into the dropdown........................//
 var city_key = [];
-let city_inherit,child_inherit;
+let city_inherit, child_inherit;
 let timer;
 let city_list = function PopulateDropDownList() {
   var cities = document.getElementById('city_dropdown');
@@ -140,15 +140,14 @@ window.addEventListener('load', defaultValue);
 function defaultValue() {
   let default_city = city_key[0];
   city_inherit = new citySelect(mydata[default_city]);
-  child_inherit=new citySelect_child(mydata[default_city]);
-  child_inherit.__proto__=city_inherit;
+  child_inherit = new citySelect_child(mydata[default_city]);
+  child_inherit.__proto__ = city_inherit;
   child_inherit.ChangeTime();
   child_inherit.ChangeDate();
   child_inherit.ChangeTemp();
   child_inherit.ChangeTimeline();
   child_inherit.ChangeIcon();
 }
-
 
 //............................Function to change values of the top section...........................//
 document.getElementById('city_input').addEventListener('change', ChangeValues);
