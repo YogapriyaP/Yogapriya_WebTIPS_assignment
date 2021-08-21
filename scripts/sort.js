@@ -17,7 +17,7 @@ export function sortContTemp() {
               <div class="cont_name">${
                 city_array[i].timeZone.split('/')[0]
               }</div>
-              <div class="cont_temperature"><img class="temperature-icon" src=" assets/HTML & CSS/Weather Icons/precipitationIcon.svg" alt="" height="15px"> ${
+              <div class="cont_temperature"> ${
                 city_array[i].temperature
               }</div>
           </div>
@@ -80,7 +80,7 @@ export function sortContTemp() {
   let sort_temp = document.getElementById('sort-temperature');
   let sort_cont_icon = document.getElementById('icon-cont');
   let sort_temp_icon = document.getElementById('icon-temp');
-  var t = 1,
+  var t = 0,
     c = 0;
 
   sort_cont.addEventListener('click', sortContinent);
@@ -109,7 +109,7 @@ export function sortContTemp() {
       sort_cont.style.color = '#AAFF00';
       city_array.sort(sortByContinent);
       DisplayContent();
-      if (t == 0) {
+      if (t == 1) {
         sort_temp.style.color = '#AAFF00';
         city_array.sort(sortByContinent);
         city_array.sort((a, b) => {
@@ -154,7 +154,7 @@ export function sortContTemp() {
 
       DisplayContent();
 
-      if (t == 0) {
+      if (t == 1) {
         sort_temp.style.color = '#AAFF00';
          city_array.sort(sortByTemperature);
 

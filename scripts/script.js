@@ -4,12 +4,12 @@ import { changeActiveState } from './Active.js';
 import { sortContTemp } from './sort.js';
 sortContTemp();
 
-
-
 // import { cityArray } from './sort.js';
 
 //..................................Event to populate the city names into the dropdown........................//
 var city_key = [];
+let city_inherit,child_inherit;
+let timer;
 let city_list = function PopulateDropDownList() {
   var cities = document.getElementById('city_dropdown');
 
@@ -19,33 +19,138 @@ let city_list = function PopulateDropDownList() {
   }
 
   city_key.sort();
-  
+
   for (let i in city_key) {
     cities.innerHTML += `<option value="${city_key[i].toUpperCase()}">`;
   }
 };
 window.addEventListener('load', city_list);
 
-//....................................Functions to change values of the top section...........................//
+//..........................Constructor to assign the values of the properties of mydata.....................//
+function citySelect(selected_city) {
+  this.cityName = selected_city.cityName;
+  this.dateAndTime = selected_city.dateAndTime;
+  this.timeZone = selected_city.timeZone;
+  this.temperature = selected_city.temperature;
+  this.humidity = selected_city.humidity;
+  this.precipitation = selected_city.precipitation;
+  this.nextFiveHrs = selected_city.nextFiveHrs;
+}
+
+function citySelect_child(selected_city) {
+  citySelect.call(this, selected_city);
+}
+
+//.................................Methods defined using prototypes..............................//
+citySelect.prototype.ChangeIcon = function () {
+  let icon = document.getElementById('city-icon');
+  icon.setAttribute(
+    'src',
+    `assets/HTML & CSS/Icons for cities/${this.cityName}.svg`
+  );
+};
+
+citySelect.prototype.ChangeTemp = function () {
+  let tempinc = document.getElementById('temp-c');
+  tempinc.innerHTML = this.temperature;
+  let tempinf = document.getElementById('temp-f');
+  tempinf.innerHTML = Math.round(TempcToTempF(this.temperature)) + '°F';
+  let humidity = document.getElementById('humi_dity');
+  humidity.innerHTML = this.humidity;
+  let precipitation = document.getElementById('prec');
+  precipitation.innerHTML = this.precipitation;
+};
+//.......................................Function to change the time and state..............................//
+
+citySelect.prototype.ChangeTime = function () {
+  let time = this.dateAndTime.split(',')[1];
+  let hours = time.split(':')[0];
+  let minutes = time.split(':')[1];
+  let seconds = time.split(':')[2];
+  let second = parseInt(seconds);
+
+  let state = seconds.split(' ')[1];
+  let s_icon = document.getElementById('ampmstate');
+
+  if (state == 'AM') {
+    s_icon.setAttribute(
+      'src',
+      'assets/HTML & CSS/General Images & Icons/amState.svg'
+    );
+  } else if (state == 'PM') {
+    s_icon.setAttribute(
+      'src',
+      'assets/HTML & CSS/General Images & Icons/pmState.svg'
+    );
+  }
+
+  ChangeRunTime(hours, minutes, second, state);
+};
+
+//......................................Function to change the Date......................................//
+
+citySelect.prototype.ChangeDate = function () {
+  let date_ = document.getElementById('citydate');
+  let mydate = this.dateAndTime.split(',')[0];
+  let date = mydate.split('/')[1];
+  let month = mydate.split('/')[0];
+  let year = mydate.split('/')[2];
+  var months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  month = months[month - 1];
+  date_.innerHTML = date + '-' + month + '-' + year;
+};
+
+citySelect.prototype.ChangeTimeline = function () {
+  let now = (document.getElementById('now').innerHTML = this.temperature);
+  let one = (document.getElementById('onehour').innerHTML =
+    this.nextFiveHrs[0]);
+  let two = (document.getElementById('twohours').innerHTML =
+    this.nextFiveHrs[1]);
+  let three = (document.getElementById('threehours').innerHTML =
+    this.nextFiveHrs[2]);
+  let four = (document.getElementById('fourhours').innerHTML =
+    this.nextFiveHrs[3]);
+  let temp = now.split('°')[0];
+  let temp1 = one.split('°')[0];
+  let temp2 = two.split('°')[0];
+  let temp3 = three.split('°')[0];
+  let temp4 = four.split('°')[0];
+  ChangeWeatherIcon(temp, 'icon_now');
+  ChangeWeatherIcon(temp1, 'icon_one');
+  ChangeWeatherIcon(temp2, 'icon_two');
+  ChangeWeatherIcon(temp3, 'icon_three');
+  ChangeWeatherIcon(temp4, 'icon_four');
+};
+citySelect_child.prototype = Object.create(citySelect.prototype);
 
 window.addEventListener('load', defaultValue);
 function defaultValue() {
   let default_city = city_key[0];
-  ChangeDate(default_city, 'citydate');
-  ChangeTime(default_city);
-  ChangeTemp(default_city);
-  ChangeTimeline(default_city);
-  ChangeIcon(default_city);
+  city_inherit = new citySelect(mydata[default_city]);
+  child_inherit=new citySelect_child(mydata[default_city]);
+  child_inherit.__proto__=city_inherit;
+  child_inherit.ChangeTime();
+  child_inherit.ChangeDate();
+  child_inherit.ChangeTemp();
+  child_inherit.ChangeTimeline();
+  child_inherit.ChangeIcon();
 }
-// function defaultValue(anadyr)
-// {
-//   ChangeDate(anadyr);
-//   ChangeTime(anadyr);
-//   ChangeTemp(anadyr);
-//   ChangeTimeline(anadyr);
-//   ChangeIcon(anadyr);
-// }
 
+
+//............................Function to change values of the top section...........................//
 document.getElementById('city_input').addEventListener('change', ChangeValues);
 function ChangeValues() {
   let flag = 0;
@@ -57,6 +162,7 @@ function ChangeValues() {
       flag++;
     }
   }
+  //............................If the selected city is null or invalid..........................//
   if (flag == 0) {
     let icon = document.getElementById('city-icon');
     icon.setAttribute(
@@ -80,35 +186,21 @@ function ChangeValues() {
     document.getElementById('icon_two').setAttribute('src', '');
     document.getElementById('icon_three').setAttribute('src', '');
     document.getElementById('icon_four').setAttribute('src', '');
-  } else {
+  }
+  //....................If the selected city is not null or invalid..............................//
+  else {
+    city_inherit = new citySelect_child(mydata[val]);
     document.getElementById('citytime').style.visibility = 'visible';
-    ChangeDate(val, 'citydate');
-    ChangeTime(val);
-    ChangeTemp(val);
-    ChangeTimeline(val);
-    ChangeIcon(val);
+    city_inherit.ChangeTime();
+    city_inherit.ChangeDate();
+    city_inherit.ChangeTemp();
+    city_inherit.ChangeTimeline();
+    city_inherit.ChangeIcon();
   }
 }
+
 function getNil(id) {
   document.getElementById(id).innerHTML = 'NIL';
-}
-
-function ChangeIcon(val) {
-  let icon = document.getElementById('city-icon');
-  icon.setAttribute('src', `assets/HTML & CSS/Icons for cities/${val}.svg`);
-}
-
-function ChangeTemp(val) {
- 
-  let tempinc = document.getElementById('temp-c');
-  
-  tempinc.innerHTML = mydata[val].temperature;
-  let tempinf = document.getElementById('temp-f');
-  tempinf.innerHTML = Math.round(TempcToTempF(mydata[val].temperature)) + '°F';
-  let humidity = document.getElementById('humi_dity');
-  humidity.innerHTML = mydata[val].humidity;
-  let precipitation = document.getElementById('prec');
-  precipitation.innerHTML = mydata[val].precipitation;
 }
 
 //...................................Function to convert temperature from C to F..............................//
@@ -117,35 +209,7 @@ function TempcToTempF(tempinc) {
   return (parseInt(tempinc) * 9) / 5 + 32;
 }
 
-//.......................................Function to change the time and state..............................//
-
-function ChangeTime(val) {
-  // let time_ = document.getElementById('citytime');
-  let time = mydata[val].dateAndTime.split(',')[1];
-  // time_.innerHTML = time.split(' ')[1];
-  let hours = time.split(':')[0];
-  let minutes = time.split(':')[1];
-  let seconds = time.split(':')[2];
-  let second = parseInt(seconds);
-
-  let state = seconds.split(' ')[1];
-  let s_icon = document.getElementById('ampmstate');
-  
-  if (state == 'AM') {
-    s_icon.setAttribute(
-      'src',
-      'assets/HTML & CSS/General Images & Icons/amState.svg'
-    );
-  } else if (state == 'PM') {
-    s_icon.setAttribute(
-      'src',
-      'assets/HTML & CSS/General Images & Icons/pmState.svg'
-    );
-  }
-
-  ChangeRunTime(hours, minutes, second, state);
-}
-let timer;
+//...............................Function to change runtime in time display and timeline.....................//
 
 function ChangeRunTime(hours, minutes, second, state) {
   clearInterval(timer);
@@ -180,6 +244,8 @@ function ChangeRunTime(hours, minutes, second, state) {
   }
 }
 
+//.......................Function to Change the weather details in the timeline for next 4 hours.................//
+
 function ChangeTimelineTime(hours, state, id, i) {
   let h = document.getElementById(id);
   let st_twelve;
@@ -207,57 +273,6 @@ function ChangeTimelineTime(hours, state, id, i) {
   }
 }
 
-//......................................Function to change the Date......................................//
-
-function ChangeDate(val, id) {
-  let date_ = document.getElementById(id);
-  let mydate = mydata[val].dateAndTime.split(',')[0];
-  let date = mydate.split('/')[1];
-  let month = mydate.split('/')[0];
-  let year = mydate.split('/')[2];
-  var months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  month = months[month - 1];
-  date_.innerHTML = date + '-' + month + '-' + year;
-}
-
-//.......................Function to Change the weather details in the timeline for next 4 hours.................//
-
-function ChangeTimeline(val) {
-  let now = (document.getElementById('now').innerHTML =
-    mydata[val].temperature);
-  let one = (document.getElementById('onehour').innerHTML =
-    mydata[val].nextFiveHrs[0]);
-  let two = (document.getElementById('twohours').innerHTML =
-    mydata[val].nextFiveHrs[1]);
-  let three = (document.getElementById('threehours').innerHTML =
-    mydata[val].nextFiveHrs[2]);
-  let four = (document.getElementById('fourhours').innerHTML =
-    mydata[val].nextFiveHrs[3]);
-  let temp = now.split('°')[0];
-  let temp1 = one.split('°')[0];
-  let temp2 = two.split('°')[0];
-  let temp3 = three.split('°')[0];
-  let temp4 = four.split('°')[0];
-  ChangeWeatherIcon(temp, 'icon_now');
-  ChangeWeatherIcon(temp1, 'icon_one');
-  ChangeWeatherIcon(temp2, 'icon_two');
-  ChangeWeatherIcon(temp3, 'icon_three');
-  ChangeWeatherIcon(temp4, 'icon_four');
-}
-
 //........................Function to Change the weather Icon in the timeline.............................//
 
 function ChangeWeatherIcon(temp, id) {
@@ -280,15 +295,13 @@ function ChangeWeatherIcon(temp, id) {
 
 //.............................................Middle Section..............................................//
 
-//...........................................................Left and Right Scroll.......................................//
-
 window.addEventListener('load', middleSection);
-
 
 function middleSection(val) {
   LeftandRightScroll();
   setTimeout(changeActiveState, 100);
 }
+//...........................................................Left and Right Scroll.......................................//
 
 function LeftandRightScroll() {
   (function getElements() {
@@ -296,17 +309,12 @@ function LeftandRightScroll() {
     let right = document.getElementById('right-scroll');
     left.addEventListener('click', leftScroll);
     right.addEventListener('click', rightScroll);
-    
-})();
+  })();
 
- function leftScroll() {
+  function leftScroll() {
     document.getElementById('card-container').scrollLeft -= 150;
   }
   function rightScroll() {
     document.getElementById('card-container').scrollLeft += 150;
   }
-  // let scroll=document.getElementById('card-container');
-  
-   
- 
 }
