@@ -1,12 +1,12 @@
-import { mydata } from './data.js';
-let city_array = [];
-for (let key in mydata) {
-  city_array.push(mydata[key]);
-}
+import { mydata } from './api.js';
 
 //....................Function to change the active state of the weather Icon in the navigation bar................//
 
 export function changeActiveState() {
+  let city_array = [];
+  for (let key in mydata) {
+    city_array.push(mydata[key]);
+  }
   let t;
   var icon_sunny = document.getElementById('sunny_icon');
   var icon_snowy = document.getElementById('snowy_icon');
@@ -23,7 +23,8 @@ export function changeActiveState() {
   function filterSunny(value) {
     return (
       value.temperature.replace('°C', '') >= 29 ||
-      value.humidity.replace('%', '') <= 50
+      (value.humidity.replace('%', '') <= 50 &&
+        value.precipitation.replace('%', '') > 50)
     );
   }
   function filterSnowy(value) {
@@ -42,6 +43,7 @@ export function changeActiveState() {
   }
 
   temp_sunny = city_array.filter(filterSunny);
+ 
   temp_snowy = city_array.filter(filterSnowy);
   temp_rainy = city_array.filter(filterRainy);
 
@@ -55,13 +57,16 @@ export function changeActiveState() {
       return +b.temperature.split('°')[0] - +a.temperature.split('°')[0];
     });
     let len = document.getElementById('input-display').value;
+    if (len > temp_sunny.length) {
+      len = temp_sunny.length;
+    }
 
     for (let k = 0; k < len; k++) {
       document.getElementById(
         'card-container'
-      ).innerHTML += `<li class="card" style="background-image: url('assets/HTML & CSS/Icons for cities/${temp_sunny[
-        k
-      ].cityName.toLowerCase()}.svg');">
+      ).innerHTML += `<li class="card" style="background-image: url('assets/HTML & CSS/Icons for cities/${
+        temp_sunny[k].cityName
+      }.svg');">
           <div class="card-title">
           <p><b>${temp_sunny[k].cityName}</b></p>
           <p><img alt="Snowy" src=" assets/HTML & CSS/Weather Icons/sunnyIcon.svg" width="20px" height="15px"> ${
@@ -96,20 +101,22 @@ export function changeActiveState() {
     icon_rainy.setAttribute('class', 'navbar-item');
     icon_snowy.setAttribute('class', 'navbar-item active');
     icon_id = icon_snowy.id;
-    // console.log(icon_id);
+  
 
     document.getElementById('card-container').innerHTML = ' ';
     temp_snowy.sort((a, b) => {
       return +b.precipitation.split('%')[0] - +a.precipitation.split('%')[0];
     });
     let len = document.getElementById('input-display').value;
-
+    if (len > temp_snowy.length) {
+      len = temp_snowy.length;
+    }
     for (let k = 0; k < len; k++) {
       document.getElementById(
         'card-container'
-      ).innerHTML += `<li class="card" style="background-image: url('assets/HTML & CSS/Icons for cities/${temp_snowy[
-        k
-      ].cityName.toLowerCase()}.svg');">
+      ).innerHTML += `<li class="card" style="background-image: url('assets/HTML & CSS/Icons for cities/${
+        temp_snowy[k].cityName
+      }.svg');">
           <div class="card-title">
           <p><b>${temp_snowy[k].cityName}</b></p>
           <p><img alt="Snowy" src=" assets/HTML & CSS/Weather Icons/snowflakeIcon.svg" width="20px" height="15px"> ${
@@ -144,20 +151,23 @@ export function changeActiveState() {
     icon_rainy.setAttribute('class', 'navbar-item active');
     icon_snowy.setAttribute('class', 'navbar-item');
     icon_id = icon_rainy.id;
-    // console.log(icon_id);
+    
 
     document.getElementById('card-container').innerHTML = ' ';
     temp_rainy.sort((a, b) => {
       return +b.humidity.split('%')[0] - +a.humidity.split('%')[0];
     });
     let len = document.getElementById('input-display').value;
+    if (len > temp_rainy.length) {
+      len = temp_rainy.length;
+    }
 
     for (let k = 0; k < len; k++) {
       document.getElementById(
         'card-container'
-      ).innerHTML += `<li class="card" style="background-image: url('assets/HTML & CSS/Icons for cities/${temp_rainy[
-        k
-      ].cityName.toLowerCase()}.svg');">
+      ).innerHTML += `<li class="card" style="background-image: url('assets/HTML & CSS/Icons for cities/${
+        temp_rainy[k].cityName
+      }.svg');">
           <div class="card-title">
           <p><b>${temp_rainy[k].cityName}</b></p>
           <p><img alt="Rainy" src=" assets/HTML & CSS/Weather Icons/rainyIcon.svg" width="20px" height="15px"> ${
@@ -186,9 +196,9 @@ export function changeActiveState() {
       getTime('.card_container');
     }, 60000);
   }
-  display.onchange=function(){
+  display.onchange = function () {
     DisplayCity.call(this);
-  }
+  };
 
   function DisplayCity() {
     if (icon_id == 'sunny_icon') {
@@ -237,7 +247,7 @@ function getTime(slider) {
     let city_min = hour_[1];
     let ampm = city_[1];
     city_min++;
-    // console.log(city_min);
+    
     if (city_min == 60) {
       city_hour++;
       city_min = 0;
