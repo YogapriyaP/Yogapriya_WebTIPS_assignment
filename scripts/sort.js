@@ -1,4 +1,4 @@
-import { mydata } from './data.js';
+import { mydata } from './api.js';
 
 export function sortContTemp() {
   let city_array = [];
@@ -17,9 +17,7 @@ export function sortContTemp() {
               <div class="cont_name">${
                 city_array[i].timeZone.split('/')[0]
               }</div>
-              <div class="cont_temperature"> ${
-                city_array[i].temperature
-              }</div>
+              <div class="cont_temperature"> ${city_array[i].temperature}</div>
           </div>
           <div class="cont_content">
               <div class="cont_city">${
@@ -156,7 +154,7 @@ export function sortContTemp() {
 
       if (t == 1) {
         sort_temp.style.color = '#AAFF00';
-         city_array.sort(sortByTemperature);
+        city_array.sort(sortByTemperature);
 
         DisplayContent();
       } else {

@@ -6,15 +6,15 @@
     <title title="Weather Forecasting App">Weather Forecasting App</title>
     <link rel="icon" href="assets/HTML & CSS/Weather Icons/weather.svg" type="image/icon type">
     <link rel="stylesheet" href="styles/style.css">
-    <script type="module" src="/scripts/script.js"></script>
+    <script type="module" src="/scripts/api.js"></script>
 </head>
 <body> 
 <!------------------ Top section to display date,time,temperature,humidity,precipitation and timeline  -------------->
 
 <header class="container">
     <div class="col-4 col-s-6 item-1">
-    <img id="city-icon" src="assets/HTML & CSS/Icons for cities/anadyr.svg" height=60px;>
-    <input list="city_dropdown" class="select-city" type="text" name="city" id="city_input" value="ANADYR"/>
+    <img id="city-icon" src="assets/HTML & CSS/Icons for cities/nome.svg" height=60px;>
+    <input list="city_dropdown" class="select-city" type="text" name="city" id="city_input" value="Nome"/>
      <datalist id="city_dropdown"></datalist>
     <div class="date-time" >
         <p class="time" id="citytime">5:21:46</p>
@@ -46,31 +46,31 @@
             <p>Now</p>
             <p  class="right_line">|</p>
             <p><img class="timeline-icon" id="icon_now"  src="assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"style="height:15px;margin-left:-4px;"></p>
-            <p id="now">-2°C</p>
+            <p id="now">-9°C</p>
         </div>
        <div>
         <P id="one_hour">10PM</P>
         <p  class="right_line">|</p>
         <p><img class="timeline-icon" id="icon_one"  src="assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></p>
-        <p id="onehour">-1°C</p>
+        <p id="onehour">-9°C</p>
     </div>
     <div>
         <P id="two_hour">11PM</P>
         <p  class="right_line">|</p>
         <p><img class="timeline-icon" id="icon_two"  src="assets/HTML & CSS/Weather Icons/rainyIcon.svg"></p>
-        <p id="twohours">3°C</p>
+        <p id="twohours">5°C</p>
     </div>
     <div>
         <p id="three_hour">12AM</p>
         <p  class="right_line">|</p>
         <p><img class="timeline-icon" id="icon_three" src="assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></p>
-        <p id="threehours">-1°C</p>
+        <p id="threehours">-4°C</p>
     </div>
     <div>
         <p id="four_hour">1AM</p>
         <p  class="right_line">|</p>
         <p><img class="timeline-icon" id="icon_four"  src="assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></p>
-        <p id="fourhours">-3°C</p>
+        <p id="fourhours">-9°C</p>
     </div>
    
 </div>
@@ -86,7 +86,7 @@
         <button class="navbar-item" id="snowy_icon"><img alt="snowy" title="Snowy" src=" assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></button>
         <button class="navbar-item"id="rainy_icon"><img alt="rainy"  title="Rainy" src=" assets/HTML & CSS/Weather Icons/rainyIcon.svg"></button>
         <label class="navbar-item" style="color:white;"> Display Top
-        <input type="number" id="input-display" class="cities_count" min="3" max="10" value="4">
+        <input type="number" id="input-display" class="cities_count" min="3" max="10" value="3">
         </label>
      </div>
     
