@@ -6,27 +6,21 @@ var requestOptions = {
   redirect: 'follow',
 };
 
-async function fetchvalues()
-{
-try{
-    const response = await fetch('https://soliton.glitch.me/all-timezone-cities',requestOptions);
+async function fetchvalues() {
+  try {
+    const response = await fetch('https://soliton.glitch.me/all-timezone-cities', requestOptions);
     const result = await response.json();
     for (let i in result) {
       result[i].nextFiveHrs = ['6°C', '7°C', '11°C', '2°C'];
       mydata[result[i].cityName] = result[i];
     }
     mainScript();
-}
-catch{
-    console.log('Cannot fetch API');
-}
+  } catch {
+   console.log('error');
+  }
 }
 fetchvalues();
 clearInterval(timer_fetch);
-timer_fetch=setInterval(() => {
-    fetchvalues();
-    
-},3600000);
-
-
-
+timer_fetch = setInterval(() => {
+  fetchvalues();
+}, 3600000);
