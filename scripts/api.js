@@ -8,7 +8,7 @@ var requestOptions = {
 
 async function fetchvalues() {
   try {
-    const response = await fetch('https://soliton.glitch.me/all-timezone-cities', requestOptions);
+    const response = await fetch('http://localhost:3000/data', requestOptions);
     const result = await response.json();
     for (let i in result) {
       result[i].nextFiveHrs = ['6°C', '7°C', '11°C', '2°C'];
@@ -16,7 +16,7 @@ async function fetchvalues() {
     }
     mainScript();
   } catch {
-   console.log('error');
+    console.log('Cannot fetch API');
   }
 }
 fetchvalues();

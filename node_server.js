@@ -1,67 +1,48 @@
-// .............................................Importing Modules............................................................//
-var http = require('http');
-var fs = require('fs');
-var path = require('path');
+const express = require('express');
+const bodyparser = require('body-parser');
+const axios = require('axios');
+let Data, citydata, hour;
 
-// .....................................................Creating Server.................................................//
+async function fetchData() {
+  return await axios.get('https://soliton.glitch.me/all-timezone-cities');
+}
+async function citydetail(city) {
+  return await axios.get(`https://soliton.glitch.me?city=${city}`);
+}
 
-http
-  .createServer(function (request, response) {
-    console.log('request starting...');
+async function nextFourHours(cityDataTime, hour) {
+  return await axios.post(`https://soliton.glitch.me/hourly-forecast`, {
+    city_Date_Time_Name: cityDataTime,
+    hours: hour,
+  });
+}
 
-    //.................................................Configuring file path...............................................//
+const app = express();
+app.use(express.static(__dirname));
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
 
-    var filePath = '.' + request.url;
-    if (filePath == './') filePath = './index.html';
-    if (filePath == './assets/')
-      filePath = './assets/HTML & CSS/Icons for cities/';
+app.get('/data', function (req, res) {
+  (async () => {
+    Data = await fetchData();
+    res.send(Data.data);
+  })();
+});
 
-    //.......................................................Configuring contenttype.........................................//
+app.get('/hours/:city', function (req, res) {
+  (async () => {
+    citydata = await citydetail(req.params.city);
+    res.send(citydata.data);
+  })();
+});
 
-    var extname = path.extname(filePath);
-    console.log(extname);
-    var contentType = 'text/html';
-    switch (extname) {
-      case '.js':
-        contentType = 'text/javascript';
-        break;
-      case '.css':
-        contentType = 'text/css';
-        break;
-      case '.json':
-        contentType = 'application/json';
-        break;
-      case '.png':
-        contentType = 'image/png';
-        break;
-      case '.svg':
-        contentType = 'application/svg+xml';
-        break;
-      case '.jpg':
-        contentType = 'image/jpg';
-        break;
-    }
+app.post('/nextfourhours', function (req, res) {
+  (async () => {
+    hour = await nextFourHours(req.body.city_Date_Time_Name, req.body.hours);
+    res.send(hour.data);
+  })();
+});
 
-    //.....................................................Reading file from the path.........................................//
-
-    fs.readFile(filePath, function (error, content) {
-      if (error) {
-        if (error.code == 'ENOENT') {
-          fs.readFile('./404.html', function (error, content) {
-            response.writeHead(200, { 'Content-Type': contentType });
-            response.end(content, 'utf-8');
-          });
-        } else {
-          response.writeHead(500);
-          response.end('Sorry, Error Occured !!!' + error.code + ' ..\n');
-          response.end();
-        }
-      } else {
-        response.writeHead(200, { 'Content-Type': contentType });
-        response.end(content, 'utf-8');
-      }
-    });
-  })
- //...................................................Server listening on port 3000.........................................//
-  .listen(3000);
-console.log('Server running at http://localhost:3000/');
+app.listen(3000, () => {
+  console.log('Server running at http://localhost:3000/');
+});
