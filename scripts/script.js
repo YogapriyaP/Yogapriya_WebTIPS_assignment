@@ -141,7 +141,7 @@ export function mainScript() {
       method: 'GET',
       redirect: 'follow',
     };
-    fetch(`https://soliton.glitch.me?city=${default_city}`, requestOptions)
+    fetch(`http://localhost:3000/hours/${default_city}`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         var myHeaders = new Headers();
@@ -159,7 +159,7 @@ export function mainScript() {
           redirect: 'follow',
         };
 
-        fetch('https://soliton.glitch.me/hourly-forecast', requestOptions)
+        fetch('http://localhost:3000/nextfourhours', requestOptions)
           .then((response) => response.json())
           .then((result) => {
             child_inherit.nextFiveHrs = result.temperature;
@@ -223,7 +223,7 @@ export function mainScript() {
         method: 'GET',
         redirect: 'follow',
       };
-      fetch(`https://soliton.glitch.me?city=${val}`, requestOptions)
+      fetch(`http://localhost:3000/hours/${val}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           var myHeaders = new Headers();
@@ -241,7 +241,7 @@ export function mainScript() {
             redirect: 'follow',
           };
 
-          fetch('https://soliton.glitch.me/hourly-forecast', requestOptions)
+          fetch('http://localhost:3000/nextfourhours', requestOptions)
             .then((response) => response.json())
             .then((result) => {
               city_inherit.nextFiveHrs = result.temperature;
