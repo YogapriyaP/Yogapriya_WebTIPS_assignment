@@ -141,7 +141,7 @@ export function mainScript() {
       method: 'GET',
       redirect: 'follow',
     };
-    fetch(`https://soliton.glitch.me?city=${default_city}`, requestOptions)
+    fetch(`http://localhost:3000/hours/${default_city}`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         var myHeaders = new Headers();
@@ -159,7 +159,7 @@ export function mainScript() {
           redirect: 'follow',
         };
 
-        fetch('https://soliton.glitch.me/hourly-forecast', requestOptions)
+        fetch('http://localhost:3000/nextfourhours', requestOptions)
           .then((response) => response.json())
           .then((result) => {
             child_inherit.nextFiveHrs = result.temperature;
@@ -223,7 +223,7 @@ export function mainScript() {
         method: 'GET',
         redirect: 'follow',
       };
-      fetch(`https://soliton.glitch.me?city=${val}`, requestOptions)
+      fetch(`http://localhost:3000/hours/${val}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           var myHeaders = new Headers();
@@ -231,7 +231,7 @@ export function mainScript() {
 
           var raw = JSON.stringify({
             city_Date_Time_Name: `${result.city_Date_Time_Name}`,
-            hours: 4
+            hours: 4,
           });
 
           var requestOptions = {
@@ -241,7 +241,7 @@ export function mainScript() {
             redirect: 'follow',
           };
 
-          fetch('https://soliton.glitch.me/hourly-forecast', requestOptions)
+          fetch('http://localhost:3000/nextfourhours', requestOptions)
             .then((response) => response.json())
             .then((result) => {
               city_inherit.nextFiveHrs = result.temperature;
@@ -281,6 +281,30 @@ export function mainScript() {
       if (minutes == 60) {
         minutes = 0;
         hours++;
+        if (hours == 12) {
+          if (state == 'AM') {
+            document
+              .getElementById('ampmstate')
+              .setAttribute(
+                'src',
+                'assets/HTML & CSS/General Images & Icons/pmState.svg'
+              );
+            state = 'PM';
+            console.log(state);
+          } else if (state == 'PM') {
+            document
+              .getElementById('ampmstate')
+              .setAttribute(
+                'src',
+                'assets/HTML & CSS/General Images & Icons/amState.svg'
+              );
+            state = 'PM';
+            console.log(state);
+          }
+        }
+        if (hours > 12) {
+          hours = hours - 12;
+        }
         // setInterval(myTimer, 1000);
       }
 
@@ -288,7 +312,7 @@ export function mainScript() {
         // add zero in front of numbers < 10
         if (i < 10) {
           i = '0' + i;
-          i=i.slice(-2);
+          i = i.slice(-2);
         }
         return i;
       }

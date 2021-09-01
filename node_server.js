@@ -2,39 +2,66 @@
 var http = require('http');
 var fs = require('fs');
 var path = require('path');
-const timeZone=require('./assets/Node JS/timeZone');
-let Data,citydetails,hour;
+var bodyParser = require('body-parser');
+const timeZone = require('./assets/Node JS/timeZone');
+let cityDetails, cityObjects;
 
 // .....................................................Creating Server.................................................//
-const options={
-  hostname: 'localhost',
-  port: 3000,
-  path: '/data',
-  method: 'GET'
-}
-
-http.request(options,function(req,res)
-{
-    Data=timeZone.allTimeZones();
-    res.json(Data);
-    console.log(Data);
-});
 
 http
   .createServer(function (request, response) {
-    console.log('request starting...');
-
     //.................................................Configuring file path...............................................//
+    // console.log(request.method);
+    if (request.method == 'GET') {
+      if (request.url == '/data') {
+        response.write(JSON.stringify(timeZone.allTimeZones()), 'utf-8', () => {
+          console.log('Writing string Data...');
+        });
+        response.end();
+      }
+      cityObjects = timeZone.allTimeZones();
+      for (let k in cityObjects) {
+        let city = cityObjects[k].cityName;
+        if (request.url == `/hours/${city}`) {
+          response.write(
+            JSON.stringify(timeZone.timeForOneCity(city)),
+            'utf-8',
+            () => {
+              console.log('Writing string Data...');
+            }
+          );
+          response.end();
+          cityDetails = timeZone.timeForOneCity(city);
+        }
+      }
+    }
+
+    if (request.method == 'POST') {
+      if (request.url == '/nextfourhours') {
+        response.write(
+          JSON.stringify(
+            timeZone.nextNhoursWeather(
+              cityDetails.city_Date_Time_Name,
+              4,
+              cityObjects
+            )
+          ),
+          'utf-8',
+          () => {
+            console.log('Writing string Data...');
+          }
+        );
+response.end();
+      }
+    }
 
     var filePath = '.' + request.url;
     if (filePath == './') filePath = './index.html';
-    if (filePath == './assets/')
-      filePath = './assets/HTML & CSS/Icons for cities/';
 
     //.......................................................Configuring contenttype.........................................//
 
     var extname = path.extname(filePath);
-    console.log(extname);
+
     var contentType = 'text/html';
     switch (extname) {
       case '.js':
@@ -50,13 +77,11 @@ http
         contentType = 'image/png';
         break;
       case '.svg':
-       contentType = 'image/svg+xml';
-       filePath.toString();
-       for(let i=0;i<filePath.length;i++)
-       {
-         filePath.replace('%20',' ');
-         console.log(filePath);
-       }
+        contentType = 'image/svg+xml';
+        filePath.toString();
+        for (let i = 0; i < 10; i++) {
+          filePath = filePath.replace('%20', ' ');
+        }
         break;
       case '.jpg':
         contentType = 'image/jpg';
@@ -83,6 +108,6 @@ http
       }
     });
   })
- //...................................................Server listening on port 3000.........................................//
+  //...................................................Server listening on port 3000.........................................//
   .listen(3000);
 console.log('Server running at http://localhost:3000/');
