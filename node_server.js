@@ -2,8 +2,23 @@
 var http = require('http');
 var fs = require('fs');
 var path = require('path');
+const timeZone=require('./assets/Node JS/timeZone');
+let Data,citydetails,hour;
 
 // .....................................................Creating Server.................................................//
+const options={
+  hostname: 'localhost',
+  port: 3000,
+  path: '/data',
+  method: 'GET'
+}
+
+http.request(options,function(req,res)
+{
+    Data=timeZone.allTimeZones();
+    res.json(Data);
+    console.log(Data);
+});
 
 http
   .createServer(function (request, response) {
@@ -35,7 +50,13 @@ http
         contentType = 'image/png';
         break;
       case '.svg':
-        contentType = 'application/svg+xml';
+       contentType = 'image/svg+xml';
+       filePath.toString();
+       for(let i=0;i<filePath.length;i++)
+       {
+         filePath.replace('%20',' ');
+         console.log(filePath);
+       }
         break;
       case '.jpg':
         contentType = 'image/jpg';
