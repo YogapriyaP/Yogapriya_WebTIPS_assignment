@@ -2,29 +2,10 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const axios = require('axios');
+const timeZone=require('./assets/Node JS/timeZone');
 let Data, citydata, hour;
 
 
-//...................................Function to fetch the data of the cities...........................................//
-
-async function fetchData() {
-  return await axios.get('https://soliton.glitch.me/all-timezone-cities');
-}
-
-//..................................Function to get the city details..........................................//
-
-async function citydetail(city) {
-  return await axios.get(`https://soliton.glitch.me?city=${city}`);
-}
-
-//.................................Function to get the temperature for next four hours..................................//
-
-async function nextFourHours(cityDataTime, hour) {
-  return await axios.post(`https://soliton.glitch.me/hourly-forecast`, {
-    city_Date_Time_Name: cityDataTime,
-    hours: hour,
-  });
-}
 
 //..........................................Calling the express function...........................//
 
@@ -38,27 +19,22 @@ app.use(bodyparser.json());
 
 //.........................GET method to fetch the data of the cities........................................//
 app.get('/data', function (req, res) {
-  (async () => {
-    Data = await fetchData();
-    res.send(Data.data);
-  })();
+  Data=timeZone.allTimeZones();
+  res.json(Data);
 });
 
 //..............................GET method to fetch the data for the selected city.................................//
 app.get('/hours/:city', function (req, res) {
-  (async () => {
-    citydata = await citydetail(req.params.city);
-    res.send(citydata.data);
-  })();
+  citydata=timeZone.timeForOneCity(req.params.city);
+  res.json(citydata);
 });
 
 //........................POST method to update the temperature data for next four hours............................//
 
 app.post('/nextfourhours', function (req, res) {
-  (async () => {
-    hour = await nextFourHours(req.body.city_Date_Time_Name, req.body.hours);
-    res.send(hour.data);
-  })();
+  Data=timeZone.allTimeZones();
+  hour=timeZone.nextNhoursWeather(req.body.city_Date_Time_Name,req.body.hours,Data);
+  res.json(hour);
 });
 
 
