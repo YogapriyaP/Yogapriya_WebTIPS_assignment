@@ -23,6 +23,7 @@ app.get('/data', function (req, res) {
   res.json(Data);
 });
 
+
 //..............................GET method to fetch the data for the selected city.................................//
 app.get('/hours/:city', function (req, res) {
   citydata=timeZone.timeForOneCity(req.params.city);
