@@ -281,6 +281,30 @@ export function mainScript() {
       if (minutes == 60) {
         minutes = 0;
         hours++;
+        if (hours == 12) {
+          if (state == 'AM') {
+            document
+              .getElementById('ampmstate')
+              .setAttribute(
+                'src',
+                'assets/HTML & CSS/General Images & Icons/pmState.svg'
+              );
+            state = 'PM';
+            console.log(state);
+          } else if (state == 'PM') {
+            document
+              .getElementById('ampmstate')
+              .setAttribute(
+                'src',
+                'assets/HTML & CSS/General Images & Icons/amState.svg'
+              );
+            state = 'PM';
+            console.log(state);
+          }
+        }
+        if (hours > 12) {
+          hours = hours - 12;
+        }
         // setInterval(myTimer, 1000);
       }
 
