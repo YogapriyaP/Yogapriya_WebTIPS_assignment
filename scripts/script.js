@@ -8,7 +8,7 @@ export function mainScript() {
   for (var k in mydata) {
     city_key.push(mydata[k]);
   }
-  
+
   let city_inherit, child_inherit;
   let timer;
   let city_list = function PopulateDropDownList() {
@@ -17,7 +17,6 @@ export function mainScript() {
 
     for (let i in city_key) {
       cities.innerHTML += `<option value="${city_key[i].cityName}">`;
-     
     }
   };
   city_list();
@@ -102,7 +101,7 @@ export function mainScript() {
     }
     ChangeTimeline() {
       let now = (document.getElementById('now').innerHTML = this.temperature);
-     
+
       let one = (document.getElementById('onehour').innerHTML =
         this.nextFiveHrs[0]);
       let two = (document.getElementById('twohours').innerHTML =
@@ -142,10 +141,9 @@ export function mainScript() {
       method: 'GET',
       redirect: 'follow',
     };
-    fetch(`https://soliton.glitch.me?city=${default_city}`, requestOptions)
+    fetch(`http://localhost:3000/hours/${default_city}`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        
         var myHeaders = new Headers();
         myHeaders.append('Content-Type', 'application/json');
 
@@ -161,19 +159,17 @@ export function mainScript() {
           redirect: 'follow',
         };
 
-         fetch('https://soliton.glitch.me/hourly-forecast', requestOptions)
+        fetch('http://localhost:3000/nextfourhours', requestOptions)
           .then((response) => response.json())
           .then((result) => {
-            child_inherit.nextFiveHrs=result.temperature;
-             child_inherit.ChangeTimeline();
-            
-            
+            child_inherit.nextFiveHrs = result.temperature;
+            child_inherit.ChangeTimeline();
           })
-          
+
           .catch((error) => console.log('error', error));
       })
       .catch((error) => console.log('error', error));
-    
+
     child_inherit.ChangeIcon();
   })();
 
@@ -227,10 +223,9 @@ export function mainScript() {
         method: 'GET',
         redirect: 'follow',
       };
-      fetch(`https://soliton.glitch.me?city=${val}`, requestOptions)
+      fetch(`http://localhost:3000/hours/${val}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-         
           var myHeaders = new Headers();
           myHeaders.append('Content-Type', 'application/json');
 
@@ -246,19 +241,17 @@ export function mainScript() {
             redirect: 'follow',
           };
 
-           fetch('https://soliton.glitch.me/hourly-forecast', requestOptions)
+          fetch('http://localhost:3000/nextfourhours', requestOptions)
             .then((response) => response.json())
             .then((result) => {
-              city_inherit.nextFiveHrs=result.temperature;
-               city_inherit.ChangeTimeline();
-              
-              
+              city_inherit.nextFiveHrs = result.temperature;
+              city_inherit.ChangeTimeline();
             })
-            
+
             .catch((error) => console.log('error', error));
         })
         .catch((error) => console.log('error', error));
-      
+
       city_inherit.ChangeIcon();
     }
   }
@@ -288,6 +281,30 @@ export function mainScript() {
       if (minutes == 60) {
         minutes = 0;
         hours++;
+        if (hours == 12) {
+          if (state == 'AM') {
+            document
+              .getElementById('ampmstate')
+              .setAttribute(
+                'src',
+                'assets/HTML & CSS/General Images & Icons/pmState.svg'
+              );
+            state = 'PM';
+            console.log(state);
+          } else if (state == 'PM') {
+            document
+              .getElementById('ampmstate')
+              .setAttribute(
+                'src',
+                'assets/HTML & CSS/General Images & Icons/amState.svg'
+              );
+            state = 'PM';
+            console.log(state);
+          }
+        }
+        if (hours > 12) {
+          hours = hours - 12;
+        }
         // setInterval(myTimer, 1000);
       }
 
@@ -295,6 +312,7 @@ export function mainScript() {
         // add zero in front of numbers < 10
         if (i < 10) {
           i = '0' + i;
+          i = i.slice(-2);
         }
         return i;
       }
@@ -332,7 +350,6 @@ export function mainScript() {
       }
       h.innerHTML = +hours + i - 12 + `${state_}`;
     } else {
-      
       h.innerHTML = +hours + i + `${state}`;
     }
   }

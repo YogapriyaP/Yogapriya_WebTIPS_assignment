@@ -6,7 +6,7 @@ body {
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
- 
+
   animation: animatedBackground 30s linear infinite;
 }
 
@@ -22,13 +22,13 @@ header img {
   background-color: transparent;
   background: transparent;
   border-color: gray;
-  width: 150px;
-  height: 25px;
-  border-radius: 5px;
-  box-shadow: 3px 3px black;
+  width: 225px;
+  height: 30px;
+  border: transparent;
   z-index: -1;
+  font-size: xx-large;
   color: black;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .date-time {
@@ -60,8 +60,8 @@ header img {
 
 .date {
   font-size: 20px;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+
   color: #fff461;
   margin-top: -35px;
   margin-left: -5px;
@@ -147,9 +147,7 @@ header img {
   position: sticky;
   margin-right: 65px;
   margin-top: -88px;
-
   align-items: center;
-
   box-sizing: border-box;
 }
 .navbar-item {
@@ -207,6 +205,7 @@ header img {
   border-radius: 50%;
   display: inline-block;
 }
+
 .left-arrow-div,
 .right-arrow-div {
   background-color: transparent;
@@ -219,7 +218,6 @@ header img {
   padding: 25px;
   width: calc(100% - 60px);
   overflow-x: scroll;
- 
 }
 .card_container::-webkit-scrollbar {
   display: none;
@@ -259,7 +257,6 @@ header img {
   animation: rotate-animation 5s linear 0s infinite;
 }
 
-
 .card:hover {
   transform: scale(1.05);
   box-shadow: 7px 7px black;
@@ -296,9 +293,7 @@ header img {
   color: var(--primary-white);
   text-align: center;
   font-weight: bold;
-
   justify-content: flex-end;
-
   width: 100%;
   display: flex;
 }
@@ -339,10 +334,9 @@ header img {
   font-family: 'Roboto', sans-serif;
 }
 
-.cont_temperature{
+.cont_temperature {
   font-size: x-large;
   font-weight: 500;
-  
 }
 
 .cont-humidity img {
@@ -395,6 +389,8 @@ header img {
   }
   .col-s-6 {
     width: 50%;
+    margin-left: -66px;
+    margin-right: 66px;
   }
   .col-s-7 {
     width: 58.33%;
@@ -421,6 +417,12 @@ header img {
   .city_item {
     justify-content: center;
     column-width: 20px;
+  }
+  .select-city {
+    margin-left: 170px;
+  }
+  header img {
+    margin-left: 190px;
   }
 }
 
@@ -512,7 +514,6 @@ header img {
   100% {
     transform: rotate(360deg);
   }
-  
 }
 @keyframes animatedBackground {
   from {
