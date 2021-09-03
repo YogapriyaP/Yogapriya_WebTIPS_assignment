@@ -231,7 +231,7 @@ export function mainScript() {
 
           var raw = JSON.stringify({
             city_Date_Time_Name: `${result.city_Date_Time_Name}`,
-            hours: 4
+            hours: 4,
           });
 
           var requestOptions = {
@@ -281,6 +281,30 @@ export function mainScript() {
       if (minutes == 60) {
         minutes = 0;
         hours++;
+        if (hours == 12) {
+          if (state == 'AM') {
+            document
+              .getElementById('ampmstate')
+              .setAttribute(
+                'src',
+                'assets/HTML & CSS/General Images & Icons/pmState.svg'
+              );
+            state = 'PM';
+            console.log(state);
+          } else if (state == 'PM') {
+            document
+              .getElementById('ampmstate')
+              .setAttribute(
+                'src',
+                'assets/HTML & CSS/General Images & Icons/amState.svg'
+              );
+            state = 'PM';
+            console.log(state);
+          }
+        }
+        if (hours > 12) {
+          hours = hours - 12;
+        }
         // setInterval(myTimer, 1000);
       }
 
@@ -288,7 +312,7 @@ export function mainScript() {
         // add zero in front of numbers < 10
         if (i < 10) {
           i = '0' + i;
-          i=i.slice(-2);
+          i = i.slice(-2);
         }
         return i;
       }
