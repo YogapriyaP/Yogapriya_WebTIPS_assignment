@@ -260,7 +260,7 @@ header img {
   transform: scale(1.05);
   box-shadow: 7px 7px black;
 }
-
+/* Bottom Section -- Sorting of continent name and temperature */
 .cities_continent {
   display: flex;
   flex-wrap: wrap;

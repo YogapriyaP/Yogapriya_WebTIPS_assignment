@@ -1,0 +1,15 @@
+{
+  "name": "timezone-weather",
+  "version": "1.0.0",
+  "description": "Fetch weather data for selected city and weather condition of that city for next N hours",
+  "main": "timeZone.js",
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/Yogapriya_P/yogapriya_webtips_assignments/src/master/"
+  },
+  "author": "Yogapriya P",
+  "license": "ISC"
+}
