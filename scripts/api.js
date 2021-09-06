@@ -1,6 +1,6 @@
 import { mainScript } from './script.js';
 export let mydata = {};
-let timer_fetch;
+// let timer_fetch;
 var requestOptions = {
   method: 'GET',
   redirect: 'follow',
@@ -20,7 +20,7 @@ async function fetchvalues() {
   }
 }
 fetchvalues();
-clearInterval(timer_fetch);
-timer_fetch = setInterval(() => {
-  fetchvalues();
-}, 3600000);
+// clearInterval(timer_fetch);
+// timer_fetch = setInterval(() => {
+//   fetchvalues();
+// }, 3600000);

@@ -13,12 +13,13 @@
     "multer": "^1.4.3",
     "request": "^2.88.2",
     "require": "^2.4.20",
+    "timezone-weather": "^1.0.0",
     "url": "^0.11.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node node_server.js"
+    "start": "node node_server"
   },
   "repository": {
     "type": "git",
