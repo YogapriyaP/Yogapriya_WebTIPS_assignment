@@ -231,7 +231,7 @@ export function mainScript() {
 
           var raw = JSON.stringify({
             city_Date_Time_Name: `${result.city_Date_Time_Name}`,
-            hours: 4
+            hours: 4,
           });
 
           var requestOptions = {
@@ -312,7 +312,7 @@ export function mainScript() {
         // add zero in front of numbers < 10
         if (i < 10) {
           i = '0' + i;
-          i=i.slice(-2);
+          i = i.slice(-2);
         }
         return i;
       }
