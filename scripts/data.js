@@ -1,16 +1,17 @@
 export let mydata = {
   nome: {
     cityName: 'Nome',
-    dateAndTime: '3/31/2020, 9:21:46 PM',
+    dateAndTime: '3/31/2020,9:21:46 PM',
     timeZone: 'America/Nome',
     temperature: '4°C',
     humidity: '91%',
     precipitation: '8%',
     nextFiveHrs: ['6°C', '7°C', '11°C', '2°C'],
   },
+  
   newyork: {
     cityName: 'NewYork',
-    dateAndTime: '4/1/2020, 1:21:46 AM',
+    dateAndTime: '4/1/2020,1:21:46 AM',
     timeZone: 'America/New_york',
     temperature: '23°C',
     humidity: '52%',
@@ -19,7 +20,7 @@ export let mydata = {
   },
   jamaica: {
     cityName: 'Jamaica',
-    dateAndTime: '4/1/2020, 12:21:46 AM',
+    dateAndTime: '4/1/2020,12:21:46 AM',
     timeZone: 'America/Jamaica',
     temperature: '29°C',
     humidity: '39%',
@@ -28,7 +29,7 @@ export let mydata = {
   },
   losangeles: {
     cityName: 'LosAngeles',
-    dateAndTime: '3/31/2020, 10:21:46 PM',
+    dateAndTime: '3/31/2020,10:21:46 PM',
     timeZone: 'America/Los_Angeles',
     temperature: '23°C',
     humidity: '52%',
@@ -37,7 +38,7 @@ export let mydata = {
   },
   winnipeg: {
     cityName: 'Winnipeg',
-    dateAndTime: '4/1/2020, 12:21:46 AM',
+    dateAndTime: '4/1/2020,12:21:46 AM',
     timeZone: 'America/Winnipeg',
     temperature: '9°C',
     humidity: '81%',
@@ -46,7 +47,7 @@ export let mydata = {
   },
   juba: {
     cityName: 'Juba',
-    dateAndTime: '4/1/2020, 8:21:46 AM',
+    dateAndTime: '4/1/2020,8:21:46 AM',
     timeZone: 'Africa/Juba',
     temperature: '18°C',
     humidity: '62%',
@@ -55,7 +56,7 @@ export let mydata = {
   },
   maseru: {
     cityName: 'Maseru',
-    dateAndTime: '4/1/2020, 7:21:46 AM',
+    dateAndTime: '4/1/2020,7:21:46 AM',
     timeZone: 'Africa/Maseru',
     temperature: '43°C',
     humidity: '10%',
@@ -64,7 +65,7 @@ export let mydata = {
   },
   london: {
     cityName: 'London',
-    dateAndTime: '4/1/2020, 6:21:46 AM',
+    dateAndTime: '4/1/2020,6:21:46 AM',
     timeZone: 'Europe/London',
     temperature: '7°C',
     humidity: '85%',
@@ -73,7 +74,7 @@ export let mydata = {
   },
   vienna: {
     cityName: 'Vienna',
-    dateAndTime: '4/1/2020, 7:21:46 AM',
+    dateAndTime: '4/1/2020,7:21:46 AM',
     timeZone: 'Europe/Vienna',
     temperature: '10°C',
     humidity: '79%',
@@ -82,7 +83,7 @@ export let mydata = {
   },
   moscow: {
     cityName: 'Moscow',
-    dateAndTime: '4/1/2020, 8:21:46 AM',
+    dateAndTime: '4/1/2020,8:21:46 AM',
     timeZone: 'Europe/Moscow',
     temperature: '11°C',
     humidity: '77%',
@@ -91,7 +92,7 @@ export let mydata = {
   },
   dublin: {
     cityName: 'Dublin',
-    dateAndTime: '4/1/2020, 6:21:46 AM',
+    dateAndTime: '4/1/2020,6:21:46 AM',
     timeZone: 'Europe/Dublin',
     temperature: '15°C',
     humidity: '68%',
@@ -100,7 +101,7 @@ export let mydata = {
   },
   karachi: {
     cityName: 'Karachi',
-    dateAndTime: '4/1/2020, 10:21:46 AM',
+    dateAndTime: '4/1/2020,10:21:46 AM',
     timeZone: 'Asia/Karachi',
     temperature: '25°C',
     humidity: '47%',
@@ -109,7 +110,7 @@ export let mydata = {
   },
   kolkata: {
     cityName: 'Kolkata',
-    dateAndTime: '4/1/2020, 10:51:46 AM',
+    dateAndTime: '4/1/2020,10:51:46 AM',
     timeZone: 'Asia/Kolkata',
     temperature: '34°C',
     humidity: '29%',
@@ -118,7 +119,7 @@ export let mydata = {
   },
   yangon: {
     cityName: 'Yangon',
-    dateAndTime: '4/1/2020, 11:51:46 AM',
+    dateAndTime: '4/1/2020,11:51:46 AM',
     timeZone: 'Asia/Yangon',
     temperature: '24°C',
     humidity: '50%',
@@ -127,7 +128,7 @@ export let mydata = {
   },
   bangkok: {
     cityName: 'BangKok',
-    dateAndTime: '4/1/2020, 12:21:46 PM',
+    dateAndTime: '4/1/2020,12:21:46 PM',
     timeZone: 'Asia/BangKok',
     temperature: '32°C',
     humidity: '33%',
@@ -136,7 +137,7 @@ export let mydata = {
   },
   seoul: {
     cityName: 'Seoul',
-    dateAndTime: '4/1/2020, 2:21:46 PM',
+    dateAndTime: '4/1/2020,2:21:46 PM',
     timeZone: 'Asia/Seoul',
     temperature: '6°C',
     humidity: '87%',
@@ -145,7 +146,7 @@ export let mydata = {
   },
   anadyr: {
     cityName: 'Anadyr',
-    dateAndTime: '4/1/2020, 5:21:46 PM',
+    dateAndTime: '4/1/2020,5:21:46 PM',
     timeZone: 'Asia/Anadyr',
     temperature: '-2°C',
     humidity: '100%',
@@ -154,7 +155,7 @@ export let mydata = {
   },
   brokenhill: {
     cityName: 'BrokenHill',
-    dateAndTime: '4/1/2020, 3:51:46 PM',
+    dateAndTime: '4/1/2020,3:51:46 PM',
     timeZone: 'Australia/Broken_Hill',
     temperature: '10°C',
     humidity: '79%',
@@ -163,7 +164,7 @@ export let mydata = {
   },
   perth: {
     cityName: 'Perth',
-    dateAndTime: '4/1/2020, 1:21:46 PM',
+    dateAndTime: '4/1/2020,1:21:46 PM',
     timeZone: 'Australia/Perth',
     temperature: '18°C',
     humidity: '62%',
@@ -172,7 +173,7 @@ export let mydata = {
   },
   auckland: {
     cityName: 'Auckland',
-    dateAndTime: '4/1/2020, 6:21:46 PM',
+    dateAndTime: '4/1/2020,6:21:46 PM',
     timeZone: 'Pacific/Auckland',
     temperature: '17°C',
     humidity: '64%',
@@ -181,7 +182,7 @@ export let mydata = {
   },
   vostok: {
     cityName: 'Vostok',
-    dateAndTime: '4/1/2020, 11:21:46 AM',
+    dateAndTime: '4/1/2020,11:21:46 AM',
     timeZone: 'Antarctica/Vostok',
     temperature: '-61°C',
     humidity: '100%',
@@ -190,7 +191,7 @@ export let mydata = {
   },
   troll: {
     cityName: 'Troll',
-    dateAndTime: '4/1/2020, 7:21:46 AM',
+    dateAndTime: '4/1/2020,7:21:46 AM',
     timeZone: 'Antarctica/Troll',
     temperature: '-52°C',
     humidity: '100%',

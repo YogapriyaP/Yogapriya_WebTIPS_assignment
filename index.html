@@ -3,32 +3,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title title="Weather Forecasting App">Weather Forecasting App</title>
-    <link rel="icon" href="assets/HTML & CSS/Weather Icons/weather.svg" type="image/icon type">
+    <title title="Weather Forecasting App">Weather - TODAY</title>
+    <link rel="icon" href="assets/HTML & CSS/Weather Icons/weather-forecast.png" type="image/icon type">
     <link rel="stylesheet" href="styles/style.css">
-    
-    <script type="module" src="/scripts/script.js"></script>
-    
-    
-
+    <script type="module" src="/scripts/api.js"></script>
 </head>
-<body>
-    <!-- Top section to display date,time,temperature,humidity,precipitation and timeline -->
+<body> 
+<!------------------ Top section to display date,time,temperature,humidity,precipitation and timeline  -------------->
 
 <header class="container">
     <div class="col-4 col-s-6 item-1">
-    <img id="city-icon" src="assets/HTML & CSS/Icons for cities/anadyr.svg" height=60px;>
-    <input list="city_dropdown" class="select-city" type="text" name="city" id="city_input" value="ANADYR"/>
+    <img id="city-icon" src="assets/HTML & CSS/Icons for cities/nome.svg" height=60px;>
+    <input list="city_dropdown" class="select-city" type="text" name="city" id="city_input" value="Nome"/>
      <datalist id="city_dropdown"></datalist>
     <div class="date-time" >
-        <p class="time" id="citytime">5:21:46</p>
+        <p class="time" id="citytime">4:34:51</p>
             <img id="ampmstate" src="assets/HTML & CSS/General Images & Icons/pmState.svg" />
         <p class="date" id="citydate">31-<span id="month" style="font-size: large;">March</span>-2020</p>
     </div>
     </div>
     <div class="col-2 col-s-6 item-2">
         <div class="line">
-        <p>Temp <span>&#8451;</span></p>
+        <p>Temp °C</p>
         <p id="temp-c">-2°C</p>
     </div>
        <div>
@@ -50,31 +46,31 @@
             <p>Now</p>
             <p  class="right_line">|</p>
             <p><img class="timeline-icon" id="icon_now"  src="assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"style="height:15px;margin-left:-4px;"></p>
-            <p id="now">-2°C</p>
+            <p id="now">-9°C</p>
         </div>
        <div>
         <P id="one_hour">10PM</P>
         <p  class="right_line">|</p>
         <p><img class="timeline-icon" id="icon_one"  src="assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></p>
-        <p id="onehour">-1°C</p>
+        <p id="onehour">-9°C</p>
     </div>
     <div>
         <P id="two_hour">11PM</P>
         <p  class="right_line">|</p>
         <p><img class="timeline-icon" id="icon_two"  src="assets/HTML & CSS/Weather Icons/rainyIcon.svg"></p>
-        <p id="twohours">3°C</p>
+        <p id="twohours">5°C</p>
     </div>
     <div>
         <p id="three_hour">12AM</p>
         <p  class="right_line">|</p>
         <p><img class="timeline-icon" id="icon_three" src="assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></p>
-        <p id="threehours">-1°C</p>
+        <p id="threehours">-4°C</p>
     </div>
     <div>
         <p id="four_hour">1AM</p>
         <p  class="right_line">|</p>
         <p><img class="timeline-icon" id="icon_four"  src="assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></p>
-        <p id="fourhours">-3°C</p>
+        <p id="fourhours">-9°C</p>
     </div>
    
 </div>
@@ -90,7 +86,7 @@
         <button class="navbar-item" id="snowy_icon"><img alt="snowy" title="Snowy" src=" assets/HTML & CSS/Weather Icons/snowflakeIcon.svg"></button>
         <button class="navbar-item"id="rainy_icon"><img alt="rainy"  title="Rainy" src=" assets/HTML & CSS/Weather Icons/rainyIcon.svg"></button>
         <label class="navbar-item" style="color:white;"> Display Top
-        <input type="number" class="cities_count" min="3" max="10" value="4">
+        <input type="number" id="input-display" class="cities_count" min="3" max="10" value="3">
         </label>
      </div>
     
@@ -102,7 +98,7 @@
 <ul class="card_container" id="card-container" style="list-style-type:none;">
   
     
-    <li class="card">
+     <li class="card">
         <div class="card-title">
         <p><b>London</b></p>
         <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/sunnyIcon.svg" width="20px" height="15px"> 25<span>&#8451;</span></p>
@@ -112,7 +108,7 @@
         <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/humidityIcon.svg" width="20px"  height="15px"> 53 %</p>
         <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> 10 %</p>
 
-    </li>
+    </li> 
     <li class="card">
         <div class="card-title">
         <p><b>London</b></p>
@@ -157,7 +153,7 @@
        
         <p><img alt="Sunny" src=" assets/HTML & CSS/Weather Icons/cloudyIcon.svg" width="20px"  height="15px"> 10 %</p>
 
-    </li>
+    </li> 
     </ul>
     <button class="right-arrow-div" id="right-scroll">
         <img class="right-arrow" src="assets/HTML & CSS/General Images & Icons/forwardArrow.svg" alt="">
@@ -167,18 +163,18 @@
     
 
 </section>
-<!-- Bottom section to display cities across the continents -->
+<!------------------------------------ Bottom section to display cities across the continents -------------------------->
 <section class="cities_continent">
     <div class="cont_header">
 
     <div class="cont_title">Cities Across Continents at a Glance</div>
     <div class="city_item">
-            <div class="continent">Continent Name&nbsp;<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></div>
-            <div class="temperature">Temperature&nbsp;<img class="cont_icon" src=" assets/HTML & CSS/General Images & Icons/arrowUp.svg" alt=""></div>
+            <button class="continent" id="sort-continent">Continent Name&nbsp;<img class="cont_icon" id="icon-cont" src=" assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></button>
+            <button class="temperature" id="sort-temperature">Temperature&nbsp;<img class="cont_icon" id="icon-temp" src=" assets/HTML & CSS/General Images & Icons/arrowDown.svg" alt=""></button>
         </div>
 </div>
 
-    <ul class="flex_container" style="list-style-type:none;">
+    <ul class="flex_container" id="continent-container" style="list-style-type:none;">
         <li class="card_cont">
             <div class="cont_city_title">
                 <div class="cont_name">Asia</div>
